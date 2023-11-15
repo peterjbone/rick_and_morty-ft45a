@@ -1,7 +1,7 @@
 import React from 'react'
-import Card from './Card'
+import Card from '../card/Card'
 
-export default function Cards({ characters }) {
+export default function Cards({ characters, onClose }) {
 	return (
 		<div>
 			{characters.map(character => {
@@ -15,7 +15,7 @@ export default function Cards({ characters }) {
 						gender={character.gender}
 						origin={character.origin.name}
 						image={character.image}
-						onClose={() => alert('Emulando que se cierra la Card')}
+						onClose={onClose}
 					/>
 				)
 			})}
