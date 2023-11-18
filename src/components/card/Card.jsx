@@ -1,18 +1,20 @@
 import React from 'react'
+import './Card.css'
+import { Link } from 'react-router-dom'
 
 export default function Card(props) {
-	//console.log(props)
 	const { onClose, name, id, status, species, gender, origin, image } = props
 	return (
-		<div>
+		<div className="card">
 			<button onClick={() => onClose(id)}>X</button>
-			<h2>Name: {name}</h2>
-			<h2>Id:{id}</h2>
-			<h2>Status: {status}</h2>
-			<h2>Species: {species}</h2>
-			<h2>Gender: {gender}</h2>
-			<h2>Origin: {origin}</h2>
-			<img src={image} alt={name} />
+			<Link key={id} to={`/detail/${id}`}>
+				<img src={image} alt={name} />
+			</Link>
+			<span className="card-name">Name: {name}</span>
+			<span>Status: {status}</span>
+			<span>Species: {species}</span>
+			<span>Gender: {gender}</span>
+			<span>Origin: {origin}</span>
 		</div>
 	)
 }

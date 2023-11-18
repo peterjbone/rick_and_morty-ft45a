@@ -1,0 +1,44 @@
+.Detail {
+	width: 100%;
+	height: calc(100vh - 90px);
+	/* 	padding: 1rem; */
+	margin: 0 auto;
+	text-align: center;
+	font-size: 1.3rem;
+	color: #fff;
+
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.character-name {
+	font: 700 2rem/1.5 system-ui;
+}
+
+.img-container {
+	width: 50%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.img-container img {
+	width: 300px;
+	margin: auto;
+	border-radius: 50%;
+}
+
+.info-container {
+	width: 50%;
+	background-color: var(--modal-teal);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.info-container p {
+	margin-bottom: 1rem;
+	text-align: center;
+}

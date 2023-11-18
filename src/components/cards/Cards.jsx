@@ -1,9 +1,10 @@
 import React from 'react'
-import Card from '../card/Card'
+import Card from '../card/Card.jsx'
+import './Cards.css'
 
 export default function Cards({ characters, onClose }) {
 	return (
-		<div>
+		<div className="cards">
 			{characters.map(character => {
 				return (
 					<Card

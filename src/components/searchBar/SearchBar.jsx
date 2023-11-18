@@ -1,4 +1,5 @@
 import React from 'react'
+import './SearchBar.css'
 
 export default function SearchBar(props) {
 	const [id, setId] = React.useState('')
@@ -12,12 +13,19 @@ export default function SearchBar(props) {
 		event.preventDefault()
 		props.onSearch(id)
 		document.getElementById('search').value = ''
+		setId('')
 	}
 
 	return (
-		<div>
-			<input type="search" id="search" name="search" onChange={handleChange} />
-			<button onClick={handleClick}>Agregar</button>
+		<div className="search-bar">
+			<input
+				type="search"
+				id="search"
+				name="search"
+				onChange={handleChange}
+				placeholder="Ingresa un ID"
+			/>
+			<button onClick={handleClick}>Agregar por ID</button>
 		</div>
 	)
 }
