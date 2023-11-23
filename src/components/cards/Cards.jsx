@@ -1,6 +1,6 @@
-import React from 'react'
-import Card from '../card/Card.jsx'
-import './Cards.css'
+import "./Cards.css"
+import React from "react"
+import Card from "../card/Card.jsx"
 
 export default function Cards({ characters, onClose }) {
 	return (
