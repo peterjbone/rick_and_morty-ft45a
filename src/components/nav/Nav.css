@@ -12,6 +12,7 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	flex-shrink: 0;
 }
 
 .navbar ul {
@@ -25,7 +26,6 @@
 
 .navbar ul li {
 	list-style-type: none;
-	display: block;
 	margin-right: 1rem;
 }
 
@@ -35,10 +35,9 @@
 }
 
 .navbar .logo {
-	/* font-weight: 700;
-	font-size: 1.3rem; */
-	width: 80px;
-	transform: translate(10px, -8px);
+	width: 90px;
+	min-width: 70px;
+	transform: translate(10px, -5px);
 }
 
 .navbar button {
@@ -50,11 +49,19 @@
 	color: var(--green);
 	background-color: transparent;
 
-	transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
+	transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+		border-color 0.2s ease-in-out;
 }
 
-.navbar button:hover {
+.navbar button:hover:not(.navbar__favorites-btn) {
 	cursor: pointer;
 	color: var(--blue);
 	background-color: var(--green);
+}
+
+.navbar__favorites-btn:hover {
+	cursor: pointer;
+	color: #000;
+	background-color: crimson;
+	border-color: crimson;
 }

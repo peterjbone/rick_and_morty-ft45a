@@ -28,6 +28,7 @@ export default function Nav(props) {
 						<button>Home</button>
 					</Link>
 				</li>
+
 				<li>
 					<Link to="/about">
 						<button>About</button>
@@ -35,9 +36,13 @@ export default function Nav(props) {
 				</li>
 
 				<li>
-					<button onClick={randomCharacter} data-dark>
-						Agregar Random
-					</button>
+					<Link to="/favorites">
+						<button className="navbar__favorites-btn">Favorites</button>
+					</Link>
+				</li>
+
+				<li>
+					<button onClick={randomCharacter}>Add ramdonly</button>
 				</li>
 
 				<li>

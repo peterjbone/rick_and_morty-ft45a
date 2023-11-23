@@ -1,4 +1,4 @@
-.cards {
+.Favorites {
 	width: max-content;
 	max-width: 85%;
 	padding: 1rem;
@@ -13,24 +13,4 @@
 	grid-auto-rows: 370px;
 	align-items: stretch;
 	gap: 25px 10px;
-}
-
-.no-cards-message {
-	position: fixed;
-	z-index: 10;
-	top: 28vh;
-	left: 13vw;
-
-	font-weight: 800;
-	font-size: 2rem;
-	text-align: center;
-	color: var(--grey);
-}
-
-.no-cards-message img {
-	width: 10rem;
-}
-
-.no-cards-message a {
-	color: var(--green);
 }

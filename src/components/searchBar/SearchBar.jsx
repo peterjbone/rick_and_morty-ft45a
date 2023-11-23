@@ -1,8 +1,8 @@
-import React from 'react'
-import './SearchBar.css'
+import React from "react"
+import "./SearchBar.css"
 
 export default function SearchBar(props) {
-	const [id, setId] = React.useState('')
+	const [id, setId] = React.useState("")
 
 	const handleChange = event => {
 		const { value } = event.target
@@ -12,8 +12,8 @@ export default function SearchBar(props) {
 	const handleClick = event => {
 		event.preventDefault()
 		props.onSearch(id)
-		document.getElementById('search').value = ''
-		setId('')
+		document.getElementById("search").value = ""
+		setId("")
 	}
 
 	return (
@@ -23,9 +23,9 @@ export default function SearchBar(props) {
 				id="search"
 				name="search"
 				onChange={handleChange}
-				placeholder="Ingresa un ID"
+				placeholder="Enter an ID"
 			/>
-			<button onClick={handleClick}>Agregar por ID</button>
+			<button onClick={handleClick}>Add by ID</button>
 		</div>
 	)
 }
