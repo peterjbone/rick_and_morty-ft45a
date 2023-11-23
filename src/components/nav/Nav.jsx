@@ -30,12 +30,6 @@ export default function Nav(props) {
 				</li>
 
 				<li>
-					<Link to="/about">
-						<button>About</button>
-					</Link>
-				</li>
-
-				<li>
 					<Link to="/favorites">
 						<button className="navbar__favorites-btn">Favorites</button>
 					</Link>
@@ -47,6 +41,12 @@ export default function Nav(props) {
 
 				<li>
 					<SearchBar onSearch={props.onSearch} />
+				</li>
+
+				<li>
+					<Link to="/about">
+						<button>About</button>
+					</Link>
 				</li>
 
 				<li>

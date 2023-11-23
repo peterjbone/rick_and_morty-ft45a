@@ -18,13 +18,24 @@
 .no-cards-message {
 	position: fixed;
 	z-index: 10;
-	top: 28vh;
-	left: 13vw;
+	top: 29vh;
+	left: 12vw;
+
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 
 	font-weight: 800;
 	font-size: 2rem;
 	text-align: center;
 	color: var(--grey);
+	background-color: #0005;
+
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
 }
 
 .no-cards-message img {

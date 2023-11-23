@@ -2,7 +2,7 @@
 	width: max-content;
 	max-width: 85%;
 	padding: 1rem;
-	margin: 2rem auto 2rem auto;
+	margin: 1rem auto 2rem auto;
 	/* 	color: var(--teal);
 	background-color: var(--blue);
 	border: thick solid var(--teal); */
@@ -13,4 +13,50 @@
 	grid-auto-rows: 370px;
 	align-items: stretch;
 	gap: 25px 10px;
+}
+
+.no-favorites {
+	position: fixed;
+	z-index: 10;
+
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+
+	font-weight: 800;
+	font-size: 2rem;
+	text-align: center;
+	color: var(--grey);
+	background-color: #0005;
+
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.no-favorites__blackHeart {
+	font-size: 5rem;
+}
+
+.fav-selects {
+	width: 100%;
+	color: var(--grey);
+
+	display: flex;
+	justify-content: center;
+}
+
+.order-container {
+	margin-right: 2rem;
+}
+
+/*** SELECTS  **/
+
+.order-container select,
+.gender-container select {
+	width: 10rem;
+	height: 2rem;
+	font-size: 1.05rem;
 }

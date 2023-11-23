@@ -19,10 +19,10 @@ export default function Deatil(props) {
 			<div className="info-container">
 				<div>
 					<p className="character-name">{character.name}</p>
-					<p>Status | {character.status}</p>
-					<p>Species | {character.species}</p>
-					<p>Gender | {character.gender}</p>
-					<p>Origin | {character.origin.name}</p>
+					<p> 🔎 Status | {character.status}</p>
+					<p> ❓ Species | {character.species}</p>
+					<p> 👫 Gender | {character.gender}</p>
+					<p> 👀 Origin | {character.origin.name}</p>
 				</div>
 			</div>
 		</div>
