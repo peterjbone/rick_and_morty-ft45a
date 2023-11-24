@@ -10,7 +10,7 @@ export default function Cards({ characters, onClose }) {
 					<h2>NO CHARACTERS ADDED TO SHOW</h2>
 					<img src="https://www.icegif.com/wp-content/uploads/2023/04/icegif-1320.gif"></img>
 					<p>
-						You can add characters randomly or by their{" "}
+						You can add characters randomly or by their {""}
 						<a href="https://rickandmortyapi.com/api/character" target="_blank">
 							ID number
 						</a>

@@ -4,18 +4,7 @@
 	--modal-teal: #29adb277;
 	--green: #c5e898;
 	--grey: #f3f3f3;
-	color-scheme: light dark;
-}
-
-.dark_theme {
-	--blue: #000;
-	--teal: #555;
-	--green: #aaa;
-	--grey: #eee;
-
-	color: #fff;
-	background-color: #000;
-	border: thick solid #fff;
+	/* color-scheme: light dark; */
 }
 
 html {
@@ -48,7 +37,6 @@ body::before {
 	width: 100%;
 	height: 100%;
 	background-image: url("../public/bg-app.png");
-	/* background-image: url("https://wallpapersmug.com/download/1366x768/38cefb/rick-and-morty-synthwave.jpg"); */
 	background-position: center bottom;
 	background-size: cover;
 	background-repeat: no-repeat;

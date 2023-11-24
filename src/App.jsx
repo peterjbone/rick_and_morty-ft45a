@@ -60,7 +60,7 @@ function App() {
 
 	useEffect(() => {
 		!access && navigate("/")
-		/* 	!access && navigate("/home") */
+		/* !access && navigate("/home") */
 
 		if (path !== "/" && path !== "/home" && path !== "about") {
 			navigate("/notFound")

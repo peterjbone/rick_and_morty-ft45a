@@ -1,6 +1,7 @@
 .loginForm-container {
 	width: 100%;
 	height: 100vh;
+	background-color: #000;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -10,7 +11,8 @@
 	width: 400px;
 	height: 400px;
 	margin: 0 auto;
-	border: thick solid var(--teal);
+	border-radius: 20px;
+	border: thick solid var(--modal-teal);
 
 	background-image: url("https://i.redd.it/3tenrar35qe31.png");
 
