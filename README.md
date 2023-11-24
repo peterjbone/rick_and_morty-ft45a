@@ -2,6 +2,44 @@
 
 ## By: Joao Bone 🗿
 
+## HOW TO PASS THE LOGIN
+
+### 1) Enter credentials
+
+**Email: example@gmail.com**
+
+**Password: 123456**
+
+### 2) Altering the App.jsx file
+
+_**From this**_:
+
+```js
+useEffect(() => {
+	!access && navigate("/")
+	/* 	!access && navigate("/home") */
+
+	if (path !== "/" && path !== "/home" && path !== "about") {
+		navigate("/notFound")
+	}
+}, [access])
+```
+
+_**To this**_:
+
+```js
+useEffect(() => {
+	/*  !access && navigate("/") */
+	!access && navigate("/home")
+
+	if (path !== "/" && path !== "/home" && path !== "about") {
+		navigate("/notFound")
+	}
+}, [access])
+```
+
+---
+
 ## CAPTURES OF THE APP 👇
 
 ### Login 🚪
