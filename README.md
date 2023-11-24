@@ -2,6 +2,20 @@
 
 ## By: Joao Bone 🗿
 
-![Texto alternativo](./public/pic_readme.jpg)
+## CAPTURES OF THE APP 👇
 
-_Imagen de relleno mientras termino la UI de la app_
+### Login 🚪
+
+![Login](./public/login.gif)
+
+### Home: adding cards by ID and Ramdonly 🃏
+
+![Home](./public/home.gif)
+
+### Favorites: Filter and Sort filter 🌟
+
+![Favorites](./public/favorites.gif)
+
+### Not found page ❌
+
+![Not found page](./public/Not_found.gif)

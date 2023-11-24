@@ -24,15 +24,3 @@ export default function validation(input) {
 
 	return errors
 }
-
-/* console.log(
-	validation({
-		email: "peter@gmail.com",
-		password: "1234567",
-	}),
-)
-
-console.log("" && 1)
-console.log(4 && "444")
-console.log(0 && "444")
-console.log(0 || "") */

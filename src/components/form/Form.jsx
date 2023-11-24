@@ -6,25 +6,25 @@ export default function Form(props) {
 	const { login } = props
 	const [userData, setUserData] = useState({
 		email: "",
-		password: "",
+		password: ""
 	})
 
 	const [errors, setErrors] = useState({
 		email: "Enter your email",
-		password: "Enter your password",
+		password: "Enter your password"
 	})
 
 	function handleChange(event) {
 		const { name, value } = event.target
 		setUserData({
 			...userData,
-			[name]: value,
+			[name]: value
 		})
 		setErrors(
 			validation({
 				...userData,
-				[name]: value,
-			}),
+				[name]: value
+			})
 		)
 	}
 
@@ -44,7 +44,7 @@ export default function Form(props) {
 						id="email"
 						name="email"
 						value={userData.email}
-						placeholder="Enter email..."
+						placeholder=""
 						onChange={handleChange}
 					/>
 					<p>{errors.email && errors.email}</p>
@@ -55,12 +55,12 @@ export default function Form(props) {
 						id="password"
 						name="password"
 						value={userData.password}
-						placeholder="Enter password..."
+						placeholder=""
 						onChange={handleChange}
 					/>
 					<p>{errors.password && errors.password}</p>
 					<button type="submit" disabled={errors.email || errors.password}>
-						Enviar
+						Submit
 					</button>
 				</div>
 			</form>

@@ -46,7 +46,7 @@ function App() {
 
 	//*LOGIN
 	const [access, setAccess] = useState(false)
-	const EMAIL = "ejemplo@gmail.com"
+	const EMAIL = "example@gmail.com"
 	const PASSWORD = "123456"
 
 	function login(userData) {
@@ -54,13 +54,13 @@ function App() {
 			setAccess(true)
 			navigate("/home")
 		} else {
-			alert("Credenciales incorrectas :(")
+			alert("Wrong credentials :(")
 		}
 	}
 
 	useEffect(() => {
-		/* !access && navigate("/") */
-		!access && navigate("/home")
+		!access && navigate("/")
+		/* 	!access && navigate("/home") */
 
 		if (path !== "/" && path !== "/home" && path !== "about") {
 			navigate("/notFound")
