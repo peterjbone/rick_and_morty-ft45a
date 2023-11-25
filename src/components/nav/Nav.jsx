@@ -1,9 +1,11 @@
 import "./Nav.css"
-import React from "react"
-import SearchBar from "../searchBar/SearchBar.jsx"
+import React, { useRef } from "react"
 import { Link } from "react-router-dom"
+import { FaBars, FaTimes } from "react-icons/fa"
+import SearchBar from "../searchBar/SearchBar.jsx"
 
 export default function Nav(props) {
+	//* LOOK FOR RANDOM CHARACTERS
 	const randomCharacter = () => {
 		let randomNum = Math.floor(Math.random() * 826) + 1
 		const charactersId = props.characters.map(char => {
@@ -13,8 +15,14 @@ export default function Nav(props) {
 		props.onSearch(randomNum)
 	}
 
+	//* Responsive navbar
+	const navRef = useRef()
+	const showNavbar = () => {
+		navRef.current.classList.toggle("responsive-nav")
+	}
+
 	return (
-		<nav className="navbar" data-dark>
+		<nav className="navbar">
 			<Link to="/home">
 				<img
 					src="../../../public/logo_proto.webp"
@@ -22,7 +30,7 @@ export default function Nav(props) {
 					className="logo"
 				/>
 			</Link>
-			<ul>
+			<ul ref={navRef}>
 				<li>
 					<Link to="/home">
 						<button>Home</button>
@@ -50,9 +58,18 @@ export default function Nav(props) {
 				</li>
 
 				<li>
-					<button onClick={props.logout}>Log out ❌</button>
+					<button onClick={props.logout}>Log out 🔙</button>
+				</li>
+
+				<li>
+					<button className="nav-btn nav-close-btn" onClick={showNavbar}>
+						<FaTimes />
+					</button>
 				</li>
 			</ul>
+			<button className="nav-btn" onClick={showNavbar}>
+				<FaBars />
+			</button>
 		</nav>
 	)
 }

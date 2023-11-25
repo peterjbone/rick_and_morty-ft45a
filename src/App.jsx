@@ -58,15 +58,17 @@ function App() {
 		}
 	}
 
+	//* REDIRECTION TO LOGIN OR HOME
 	useEffect(() => {
-		!access && navigate("/")
-		/* !access && navigate("/home") */
+		/* !access && navigate("/") */
+		!access && navigate("/home")
 
 		if (path !== "/" && path !== "/home" && path !== "about") {
 			navigate("/notFound")
 		}
 	}, [access])
 
+	//*LOGIN
 	function logout() {
 		setAccess(false)
 	}
