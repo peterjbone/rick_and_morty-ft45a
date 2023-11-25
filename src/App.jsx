@@ -63,7 +63,7 @@ function App() {
 		/* !access && navigate("/") */
 		!access && navigate("/home")
 
-		if (path !== "/" && path !== "/home" && path !== "about") {
+		if (path !== "/" && path !== "/home" && path !== "/about") {
 			navigate("/notFound")
 		}
 	}, [access])

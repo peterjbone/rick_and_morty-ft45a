@@ -2,7 +2,7 @@
 
 ## By: Joao Bone 🗿
 
-## HOW TO PASS THE LOGIN
+## HOW TO PASS THE LOGIN 🛑
 
 ### 1) Enter credentials
 
