@@ -46,9 +46,17 @@ useEffect(() => {
 
 ![Login](./public/login.gif)
 
+### Login success & Login denied (NEW LOGIN) ✅
+
+![New login](./public/new_login.gif)
+
 ### Home: adding cards by ID and Ramdonly 🃏
 
 ![Home](./public/home.gif)
+
+### Responsive Navigation Bar 🚀
+
+![Responsive navbar](./public/responsive_navbar.gif)
 
 ### Favorites: Filter and Sort filter 🌟
 

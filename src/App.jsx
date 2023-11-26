@@ -114,9 +114,14 @@ function App() {
 	//* REDIRECTION TO LOGIN OR HOME
 	useEffect(() => {
 		!access && navigate("/")
-		/* !access && navigate("/home") */
+		/* 		!access && navigate("/home") */
 
-		if (path !== "/" && path !== "/home" && path !== "/about") {
+		if (
+			path !== "/" &&
+			path !== "/home" &&
+			path !== "/about" &&
+			!path.startsWith("detail")
+		) {
 			navigate("/notFound")
 		}
 	}, [access])
