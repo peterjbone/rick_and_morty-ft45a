@@ -3,11 +3,20 @@
 	height: 100vh;
 	background-color: #000;
 	display: flex;
+	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
 }
 
+.loginForm-container > h2 {
+	/* 	position: absolute;
+	top: 15px; */
+	font-size: 2rem;
+	color: var(--grey);
+}
+
 .loginForm {
+	position: relative;
 	width: 400px;
 	height: 400px;
 	margin: 0 auto;
@@ -21,6 +30,7 @@
 	background-position: center;
 
 	display: flex;
+	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
 }
@@ -44,19 +54,27 @@
 	font-size: 1.3rem;
 	color: var(--blue);
 	background-color: var(--green);
+
+	display: block;
 }
 
 .loginForm div button {
 	width: 50%;
 	height: 40px;
 	border: medium solid #fff;
-	font-size: 1.3rem;
-	font-weight: 600;
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--grey);
 	background-color: var(--blue);
 }
 
 .loginForm div button:hover {
 	cursor: pointer;
+}
+
+.loginForm div button.disabled {
+	transition: 1s;
+	filter: grayscale(100%);
 }
 
 .loginForm p {
@@ -65,4 +83,30 @@
 	font-size: 1.3rem;
 	text-align: center;
 	margin: 0 auto 1rem auto;
+}
+
+/********************************/
+
+#email.invalid {
+	border: medium solid red;
+}
+
+#password.invalid {
+	border: medium solid red;
+}
+
+#notifyEmail,
+#notifyPassword {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 10px;
+	font-size: 1rem;
+	width: 100%;
+	color: #fff;
+	display: block;
+	width: 100%;
+}
+#notifyEmail.error,
+#notifyPassword.error {
+	background-color: #dd2c00;
 }

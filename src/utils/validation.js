@@ -1,22 +1,21 @@
-/* import { regexEmail, regexPassword } from "./constants" */
+import { regexEmail, regexPassword } from "./constants.js"
 
 export default function validation(input) {
 	const errors = {}
-	const regexEmail = /\S+@\S+\.\S+/i
-	const regexPassword = /\w+[0-9]/
 
 	//*email
 	if (!input.email) errors.email = "Enter your email"
 	else {
 		if (!regexEmail.test(input.email))
-			errors.email = "You have to enter a valid email format!"
-		if (input.email.length > 35) errors.email = "Less than 35 characters"
+			errors.email = "Enter a valid email format!"
+		if (input.email.length > 35)
+			errors.email = "Email has to be Less than 35 characters"
 	}
 
 	//*password
 	if (!input.password) errors.password = "Enter your password"
 	if (input.password && !regexPassword.test(input.password))
-		errors.password = "It must has at least one number"
+		errors.password = "Only number are allowed"
 	if (input.password && input.password.length < 6)
 		errors.password = "At least 6 characters"
 	if (input.password && input.password.length > 10)
