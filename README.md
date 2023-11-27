@@ -1,5 +1,7 @@
 # Rick and Morty app 👾
 
+## Try it for yourself! 👉 https://rick-and-morty-ft45a.netlify.app/
+
 ## By: Joao Bone 🗿
 
 ## HOW TO PASS THE LOGIN 🛑
