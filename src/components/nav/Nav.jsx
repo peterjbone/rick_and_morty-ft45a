@@ -25,7 +25,8 @@ export default function Nav(props) {
 		<nav className="navbar">
 			<Link to="/home">
 				<img
-					src="../../../public/logo_proto.webp"
+					/* src="../../../public/logo_proto.webp" */
+					src="https://i.postimg.cc/cHH4JcWv/logo-proto.webp"
 					alt="Logo"
 					className="logo"
 				/>
