@@ -113,8 +113,8 @@ function App() {
 
 	//* REDIRECTION TO LOGIN OR HOME
 	useEffect(() => {
-		/* !access && navigate("/") */
-		!access && navigate("/home")
+		!access && navigate("/")
+		/* !access && navigate("/home") */
 
 		if (
 			path !== "/" &&
