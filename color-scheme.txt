@@ -1,4 +1,0 @@
-blue: #0766AD
-teal: #29ADB2
-green: #C5E898
-grey: #F3F3F3

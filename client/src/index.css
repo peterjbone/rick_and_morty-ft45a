@@ -1,0 +1,59 @@
+:root {
+	--blue: #0766ad;
+	--teal: #29adb2;
+	--modal-teal: #29adb277;
+	--green: #c5e898;
+	--grey: #f3f3f3;
+	/* color-scheme: light dark; */
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	text-align: center;
+	font: 400 1rem/1.3 "Montserrat", sans-serif;
+	color: #000;
+	background-color: var(--grey);
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../public/bg-app.png");
+	background-position: center bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#root {
+	min-height: inherit;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+h1,
+h2,
+h3,
+p {
+	margin: 0;
+}
