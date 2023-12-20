@@ -16,26 +16,26 @@ _**From this**_:
 
 ```js
 useEffect(() => {
-	!access && navigate("/")
-	/* 	!access && navigate("/home") */
+  !access && navigate("/");
+  /* 	!access && navigate("/home") */
 
-	if (path !== "/" && path !== "/home" && path !== "about") {
-		navigate("/notFound")
-	}
-}, [access])
+  if (path !== "/" && path !== "/home" && path !== "about") {
+    navigate("/notFound");
+  }
+}, [access]);
 ```
 
 _**To this**_:
 
 ```js
 useEffect(() => {
-	/*  !access && navigate("/") */
-	!access && navigate("/home")
+  /*  !access && navigate("/") */
+  !access && navigate("/home");
 
-	if (path !== "/" && path !== "/home" && path !== "about") {
-		navigate("/notFound")
-	}
-}, [access])
+  if (path !== "/" && path !== "/home" && path !== "about") {
+    navigate("/notFound");
+  }
+}, [access]);
 ```
 
 ---
@@ -44,24 +44,20 @@ useEffect(() => {
 
 ### Login 🚪
 
-![Login](./public/login.gif)
+![New login](./client/public/new_login.gif)
 
-### Login success & Login denied (NEW LOGIN) ✅
+### Home: Adding cards 🃏
 
-![New login](./public/new_login.gif)
-
-### Home: adding cards by ID and Ramdonly 🃏
-
-![Home](./public/home.gif)
+![Home](./client/public/home.gif)
 
 ### Responsive Navigation Bar 🚀
 
-![Responsive navbar](./public/responsive_navbar.gif)
+![Responsive navbar](./client/public/responsive_navbar.gif)
 
-### Favorites: Filter and Sort filter 🌟
+### Favorites: Filter and Sort 🌟
 
-![Favorites](./public/favorites.gif)
+![Favorites](./client/public/favorites.gif)
 
 ### Not found page ❌
 
-![Not found page](./public/Not_found.gif)
+![Not found page](./client/public/Not_found.gif)
