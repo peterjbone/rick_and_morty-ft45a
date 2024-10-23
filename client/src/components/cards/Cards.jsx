@@ -17,10 +17,11 @@ export default function Cards({ characters, onClose }) {
 					</p>
 				</div>
 			) : (
-				characters.map(character => {
+				characters.map((character) => {
 					return (
 						<Card
 							key={character.id}
+							character={character}
 							name={character.name}
 							id={character.id}
 							status={character.status}
@@ -29,7 +30,6 @@ export default function Cards({ characters, onClose }) {
 							origin={character.origin.name}
 							image={character.image}
 							onClose={onClose}
-							character={character}
 						/>
 					)
 				})

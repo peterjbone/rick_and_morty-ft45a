@@ -2,8 +2,9 @@
 const express = require("express")
 const server = express()
 const morgan = require("morgan")
-const indexRouter = require("./routes/index.js")
+const router = require("./routes/index.js")
 
+//* Headers
 server.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*")
 	res.header("Access-Control-Allow-Credentials", "true")
@@ -15,8 +16,13 @@ server.use((req, res, next) => {
 	next()
 })
 
+//* Para que express pueda leer body
 server.use(express.json())
+
+//* Info de las peticiones HTTP por consola
 server.use(morgan("dev"))
-server.use("/rickandmorty", indexRouter)
+
+//* Manejo de rutas
+server.use("/rickandmorty", router)
 
 module.exports = server

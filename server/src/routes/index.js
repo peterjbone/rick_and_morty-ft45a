@@ -1,14 +1,18 @@
 const { Router } = require("express")
-const indexRouter = Router()
+const router = Router()
 
-//* IMPORTING THE CONTROLLERS
-const login = require("../controllers/login.js")
+//* IMPORTING CONTROLLERS
 const getCharById = require("../controllers/getCharById.js")
-const { postFav, deleteFav } = require("../controllers/handleFavorites.js")
+const login = require("../controllers/login.js")
+const postUser = require("../controllers/postUser.js")
+const postFav = require("../controllers/postFav.js")
+const deleteFav = require("../controllers/deleteFav.js")
 
-indexRouter.get("/login", login)
-indexRouter.get("/character/:id", getCharById)
-indexRouter.post("/fav", postFav)
-indexRouter.delete("/fav/:id", deleteFav)
+//* USING CONTROLLERS
+router.get("/character/:id", getCharById) //? FINALIZADO
+router.post("/login", postUser) //? FINALIZADO
+router.get("/login", login) //? FINALIZADO
+router.post("/fav", postFav)
+router.delete("/fav/:id", deleteFav)
 
-module.exports = indexRouter
+module.exports = router

@@ -1,13 +1,12 @@
 import { regexEmail, regexPassword } from "./constants.js"
 
-export default function validation(input) {
+function validation(input) {
 	const errors = {}
 
 	//*email
 	if (!input.email) errors.email = "Enter your email"
 	else {
-		if (!regexEmail.test(input.email))
-			errors.email = "Enter a valid email format!"
+		if (!regexEmail.test(input.email)) errors.email = "Enter a valid email format!"
 		if (input.email.length > 35)
 			errors.email = "Email has to be Less than 35 characters"
 	}
@@ -23,3 +22,5 @@ export default function validation(input) {
 
 	return errors
 }
+
+export default validation

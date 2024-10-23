@@ -1,15 +1,14 @@
-import React from "react"
 import "./SearchBar.css"
+import { useState } from "react"
 
 export default function SearchBar(props) {
-	const [id, setId] = React.useState("")
-
-	const handleChange = event => {
+	const [id, setId] = useState("")
+	const handleChange = (event) => {
 		const { value } = event.target
 		setId(value)
 	}
 
-	const handleClick = event => {
+	const handleClick = (event) => {
 		event.preventDefault()
 		props.onSearch(id)
 		document.getElementById("search").value = ""

@@ -1,20 +1,12 @@
-import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types"
-import axios from "axios"
+import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types.js"
 
 const initialState = {
-	myFavorites: [],
-	allCharacters: []
+	myFavorites: [], //? Este el estado global que consumira el frontend, puede ser manipulado
+	allCharacters: [] //? Este es un respaldo de todos los favoritos para no perder datos
 }
 
-export default function reducer(state = initialState, { type, payload }) {
+function reducer(state = initialState, { type, payload }) {
 	switch (type) {
-		/* 		case ADD_FAV: {
-			return {
-				...state,
-				allCharacters: [...state.myFavorites, payload],
-				myFavorites: [...state.myFavorites, payload]
-			}
-		} */
 		case ADD_FAV:
 			return {
 				...state,
@@ -22,37 +14,33 @@ export default function reducer(state = initialState, { type, payload }) {
 				allCharacters: payload
 			}
 
-		/* 	case REMOVE_FAV: {
-			const removedCharacters = state.allCharacters.filter(
-				char => char.id !== Number(payload)
-			)
+		case REMOVE_FAV:
 			return {
 				...state,
-				allCharacters: removedCharacters,
-				myFavorites: removedCharacters
+				myFavorites: payload,
+				allCharacters: payload
 			}
-		} */
-
-		case REMOVE_FAV:
-			return { ...state, myFavorites: payload }
 
 		case FILTER: {
-			if (payload === "All")
+			if (payload === "All") {
 				return {
 					...state,
 					myFavorites: [...state.allCharacters]
 				}
-			const filteredFavs = state.allCharacters.filter(
-				char => char.gender === payload
-			)
-			return {
-				...state,
-				myFavorites: filteredFavs
+			} else {
+				const filteredFavs = state.allCharacters.filter(
+					(char) => char.gender === payload
+				)
+				return {
+					...state,
+					myFavorites: filteredFavs
+				}
 			}
 		}
 
 		case ORDER: {
 			const favsCopy = [...structuredClone(state.myFavorites)]
+
 			if (payload === "A") {
 				favsCopy.sort((a, b) => a.id - b.id)
 			}
@@ -70,3 +58,5 @@ export default function reducer(state = initialState, { type, payload }) {
 			return { ...state }
 	}
 }
+
+export default reducer

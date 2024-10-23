@@ -1,58 +1,31 @@
+//* LAS ACTIONS SE ENCARGAN DE GUARDAR EN REDUX ESTADO GLOBAL Y POSTGRESQL BD
+
 import axios from "axios"
 import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types"
 
-/* export function addFav(character) {
-	return {
-		type: ADD_FAV,
-		payload: character
-	}
-} */
-
-export const addFav = character => {
+export const addFav = (character) => {
+	console.log(character)
 	const endpoint = "http://localhost:3001/rickandmorty/fav"
-	return async dispatch => {
-		/*axios.post(endpoint, character)
-       .then(({ data }) => {
-			return dispatch({
-				type: ADD_FAV,
-				payload: data
-			})
-		}) */
-
-		try {
-			const { data } = await axios.post(endpoint, character)
-			const charactersFav = data
-			return dispatch({
-				type: ADD_FAV,
-				payload: charactersFav
-			})
-		} catch (error) {}
+	return async (dispatch) => {
+		const { data } = await axios.post(endpoint, character)
+		console.log(data)
+		return dispatch({
+			type: ADD_FAV,
+			payload: data
+		})
 	}
 }
 
-/* export function removeFav(id) {
-	return {
-		type: REMOVE_FAV,
-		payload: id
-	}
-} */
-
-export const removeFav = id => {
-	const endpoint = "http://localhost:3001/rickandmorty/fav/" + id
-	return async dispatch => {
-		// axios.delete(endpoint).then(({ data }) => {
-		// 	return dispatch({
-		// 		type: REMOVE_FAV,
-		// 		payload: data
-		// 	})
-		// })
-		try {
-			const { data } = await axios.delete(endpoint)
-			return dispatch({
-				type: REMOVE_FAV,
-				payload: data
-			})
-		} catch (error) {}
+export const removeFav = (id) => {
+	console.log(id)
+	const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`
+	return async (dispatch) => {
+		const { data } = await axios.delete(endpoint)
+		console.log(data)
+		return dispatch({
+			type: REMOVE_FAV,
+			payload: data
+		})
 	}
 }
 

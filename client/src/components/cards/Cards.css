@@ -3,14 +3,13 @@
 	max-width: 85%;
 	padding: 1rem;
 	margin: 2rem auto 2rem auto;
-	/* 	color: var(--teal);
-	background-color: var(--blue);
-	border: thick solid var(--teal); */
+	border: 3px solid red;
 
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-columns: repeat(auto-fill, 250px);
-	grid-auto-rows: 370px;
+	/* 	grid-template-columns: repeat(3, 1fr); */
+	/* grid-template-columns: repeat(auto-fill, 250px); */
+	grid-template-columns: repeat(5, minmax(150px, 200px));
+	grid-auto-rows: 300px;
 	align-items: stretch;
 	gap: 25px 10px;
 }

@@ -1,78 +1,79 @@
+//* THIS THE LOGIN
+
 import "./Form.css";
-import "animate.css";
 import React, { useState } from "react";
-import { IoKeySharp } from "react-icons/io5";
-import { FaDoorClosed } from "react-icons/fa";
-import validation from "../../utils/validation";
+import validation from "../../utils/validation.js"; //? Validaciones para formularios controlados
 
-export default function Form(props) {
-  //* MANAGE THE USER INPUT
-  const { login } = props;
+export default function Form({ login }) {
+	//* Creando estados locales de datos de usuario y errores de validación
+	const [userData, setUserData] = useState({
+		email: "",
+		password: ""
+	});
 
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-  });
+	const [errors, setErrors] = useState({
+		email: "Enter your email",
+		password: "Enter your password"
+	});
 
-  const [errors, setErrors] = useState({
-    email: "Enter your email",
-    password: "Enter your password",
-  });
+	//* Seteando los valores de los estados-locales email y password
+	//* Al mismo tiempo haciendo validaciones de ambas (formulario controlado)
+	function handleChange(event) {
+		const { name, value } = event.target;
+		setUserData({
+			...userData,
+			[name]: value
+		});
+		setErrors(
+			validation({
+				...userData,
+				[name]: value
+			})
+		);
+	}
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
-    setErrors(
-      validation({
-        ...userData,
-        [name]: value,
-      })
-    );
-  }
-  function handleSubmit(event) {
-    event.preventDefault();
-    login(userData);
-  }
+	//* Solo se ejecuta el login() y se envia el userData
+	//* si no hay errores de formato en email y password
+	function handleSubmit(event) {
+		event.preventDefault();
+		login(userData);
+	}
 
-  return (
-    <div className="loginForm-container">
-      <h2>Login</h2>
-      <form className="loginForm" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            key="email"
-            type="text"
-            id="email"
-            name="email"
-            value={userData.email}
-            placeholder="Your email here"
-            onChange={handleChange}
-          />
-          <p>{errors.email && errors.email}</p>
-          <label htmlFor="password">Password:</label>
-          <input
-            key="password"
-            type="password"
-            id="password"
-            name="password"
-            value={userData.password}
-            placeholder="Your password here"
-            onChange={handleChange}
-          />
-          <p>{errors.password && errors.password}</p>
-          <button
-            type="submit"
-            disabled={!errors.email && !errors.password ? false : true}
-            className={errors.email || errors.password ? "disabled" : ""}
-          >
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+	return (
+		<div className="loginForm-container">
+			<h2>Login</h2>
+			<form className="loginForm" onSubmit={handleSubmit}>
+				<div>
+					<label htmlFor="email">Email:</label>
+					<input
+						key="email"
+						type="text"
+						id="email"
+						name="email"
+						value={userData.email}
+						placeholder="Your email here"
+						onChange={handleChange}
+					/>
+					<p>{errors.email && errors.email}</p>
+					<label htmlFor="password">Password:</label>
+					<input
+						key="password"
+						type="password"
+						id="password"
+						name="password"
+						value={userData.password}
+						placeholder="Your password here"
+						onChange={handleChange}
+					/>
+					<p>{errors.password && errors.password}</p>
+					<button
+						type="submit"
+						disabled={!errors.email && !errors.password ? false : true}
+						className={errors.email || errors.password ? "disabled" : ""}>
+						Submit
+					</button>
+				</div>
+			</form>
+		</div>
+	);
 }

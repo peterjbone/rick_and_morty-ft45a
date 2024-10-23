@@ -1,9 +1,9 @@
-import styles from "./About.module.css"
-import React from "react"
-import styled from "styled-components"
-import { FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa"
-import { IoLogoJavascript } from "react-icons/io5"
-import { TbBrandRedux } from "react-icons/tb"
+import styles from "./About.module.css";
+import React from "react";
+import styled from "styled-components";
+import { FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io5";
+import { TbBrandRedux } from "react-icons/tb";
 
 export default function About(props) {
 	const Technologies = styled.div`
@@ -15,7 +15,7 @@ export default function About(props) {
 		background-color: var(--blue);
 		font-family: system-ui;
 		font-size: 1.5rem;
-	`
+	`;
 
 	const Myself = styled.div`
 		height: 100%;
@@ -27,13 +27,13 @@ export default function About(props) {
 		flex-flow: column;
 		justify-content: space-between;
 		align-items: center;
-	`
+	`;
 
 	const Photo = styled.img`
 		width: 250px;
 		margin-top: -2rem;
 		filter: brightness(0.7) drop-shadow(0 0 10px rgb(160, 0, 210));
-	`
+	`;
 
 	return (
 		<div className={styles.About}>
@@ -66,5 +66,5 @@ export default function About(props) {
 				</ul>
 			</Technologies>
 		</div>
-	)
+	);
 }

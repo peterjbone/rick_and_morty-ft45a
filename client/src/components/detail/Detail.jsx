@@ -3,25 +3,22 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 
-export default function Deatil(props) {
-	/* 	const { characters } = props
-	let character = characters.find(char => char.id === Number(id)) */
-
+export default function Detail(props) {
 	const URL = "http://localhost:3001/rickandmorty/character"
 	const { id } = useParams()
 	const [character, setCharacter] = useState({})
 
 	useEffect(() => {
-		if (id) {
-			axios(`${URL}/${id}`).then(({ data }) => {
-				if (data.name) {
-					//console.log("From the detail component :D ", data)
+		//prettier-ignore
+		axios(`${URL}/${id}`)
+        .then(({ data }) => {
 					setCharacter(data)
-				} else {
-					alert("There are no characters with that ID")
-				}
-			})
-		}
+        })
+        .catch((error) => {
+          console.error(error.message)
+          alert("There are no characters with that ID")
+        })
+
 		return setCharacter({})
 	}, [id])
 
@@ -36,13 +33,9 @@ export default function Deatil(props) {
 					<p> 🔎 Status | {character.status}</p>
 					<p> ❓ Species | {character.species}</p>
 					<p> 👫 Gender | {character.gender}</p>
-					{<p> 👀 Origin | {character.origin?.name}</p>}
+					{<p> 👀 Origin | {character.origin}</p>}
 				</div>
 			</div>
 		</div>
 	)
 }
-
-/*
-<Nav onSearch={onSearch} characters={characters} logout={logout} />
-*/

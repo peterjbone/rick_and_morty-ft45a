@@ -1,16 +1,15 @@
 import "./Card.css"
-import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { addFav, removeFav } from "../../redux/actions"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { addFav, removeFav } from "../../redux/actions.js"
 
-export default function Card(props) {
-	const { onClose, name, id, image, character } = props
-	const redHeart = "❤️",
-		blackHeart = "🖤"
-
-	const dispatch = useDispatch()
+export default function Card({ character, id, name, image, onClose }) {
+	//* AÑADIR Y QUITAR FAVORITOS EN REDUX
+	//prettier-ignore
+	const redHeart = "❤️", blackHeart = "🖤"
 	const [isFav, setIsFav] = useState(false)
+	const dispatch = useDispatch()
 	function handleFavorite() {
 		if (isFav) {
 			setIsFav(false)
@@ -21,37 +20,36 @@ export default function Card(props) {
 		}
 	}
 
-	const myFavorites = useSelector(state => state.myFavorites)
+	//* MANTENER FAVORITOS AL MONTAR COMPONENTE
+	const myFavorites = useSelector((state) => state.myFavorites)
 	useEffect(() => {
-		myFavorites.forEach(fav => {
+		myFavorites.forEach((fav) => {
 			if (fav.id === id) {
 				setIsFav(true)
 			}
 		})
 	}, [myFavorites])
 
+	//* COMPONENTE CARD
 	return (
-		<div className="card" data-dark>
+		<div className="card">
+			{/* Boton de Cerrar */}
 			<button onClick={() => onClose(id)} id="closeBtn">
 				X
 			</button>
 
+			{/* Boton de Favorito */}
 			{isFav ? (
-				<button
-					onClick={handleFavorite}
-					id="favBtn"
-					style={{ backgroundColor: "#000" }}>
+				<button onClick={handleFavorite} id="favBtn" style={{ backgroundColor: "#000" }}>
 					{redHeart}
 				</button>
 			) : (
-				<button
-					onClick={handleFavorite}
-					id="favBtn"
-					style={{ backgroundColor: "crimson" }}>
+				<button onClick={handleFavorite} id="favBtn" style={{ backgroundColor: "crimson" }}>
 					{blackHeart}
 				</button>
 			)}
 
+			{/* Resto de la card */}
 			<Link key={id} to={`/detail/${id}`}>
 				<img src={image} alt={name} />
 				<span className="card-id">ID: {id}</span>

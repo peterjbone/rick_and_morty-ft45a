@@ -5,17 +5,17 @@ import { FaBars, FaTimes } from "react-icons/fa"
 import SearchBar from "../searchBar/SearchBar.jsx"
 
 export default function Nav(props) {
-	//* LOOK FOR RANDOM CHARACTERS
+	//* Add random character function
 	const randomCharacter = () => {
 		let randomNum = Math.floor(Math.random() * 826) + 1
-		const charactersId = props.characters.map(char => {
+		const charactersId = props.characters.map((char) => {
 			return char.id
 		})
 		if (charactersId.includes(randomNum)) return
 		props.onSearch(randomNum)
 	}
 
-	//* Responsive navbar
+	//* Responsive navbar function
 	const navRef = useRef()
 	const showNavbar = () => {
 		navRef.current.classList.toggle("responsive-nav")

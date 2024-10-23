@@ -1,11 +1,9 @@
 /*** ALL CARD ***/
 .card {
 	position: relative;
-	/* width: 250px; */
-	/* 	height: 350px; */
 	border-radius: 15px;
+	border: 3px solid red;
 	overflow: hidden;
-	/* 	color: var(--green); */
 	background-color: var(--teal);
 	transition: filter 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
@@ -22,8 +20,8 @@
 	z-index: 1;
 	top: -1px;
 	right: -1px;
-	width: 50px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 	border: none;
 	font-size: 1.2rem;
 	font-weight: 700;
@@ -38,17 +36,17 @@
 	color: white;
 	background-color: red;
 }
-/*** CLOSE BUTTON ***/
+/*** FAV BUTTON ***/
 
 .card #favBtn {
 	position: absolute;
 	z-index: 1;
 	top: -1px;
 	left: -1px;
-	width: 50px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 	border: none;
-	font-size: 1.5rem;
+	font-size: 1rem;
 	font-weight: 700;
 	background-color: crimson;
 
