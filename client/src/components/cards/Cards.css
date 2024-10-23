@@ -1,17 +1,36 @@
 .cards {
-	width: max-content;
+	width: fit-content;
+	min-width: 400px;
 	max-width: 85%;
 	padding: 1rem;
 	margin: 2rem auto 2rem auto;
-	border: 3px solid red;
 
 	display: grid;
-	/* 	grid-template-columns: repeat(3, 1fr); */
-	/* grid-template-columns: repeat(auto-fill, 250px); */
-	grid-template-columns: repeat(5, minmax(150px, 200px));
+	grid-template-columns: repeat(2, minmax(150px, 200px));
 	grid-auto-rows: 300px;
 	align-items: stretch;
 	gap: 25px 10px;
+}
+
+/* sm screens*/
+@media (min-width: 640px) {
+	.cards {
+		grid-template-columns: repeat(3, minmax(150px, 200px));
+	}
+}
+
+/* md screens*/
+@media (min-width: 768px) {
+	.cards {
+		grid-template-columns: repeat(4, minmax(150px, 200px));
+	}
+}
+
+/* lg screens*/
+@media (min-width: 1024px) {
+	.cards {
+		grid-template-columns: repeat(5, minmax(150px, 200px));
+	}
 }
 
 .no-cards-message {
