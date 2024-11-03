@@ -8,7 +8,7 @@ if (!process.env.MONGODB_URL) {
 
 async function connectDB() {
 	try {
-		await connect(process.env.MONGODB_URL);
+		await connect(process.env.MONGODB_URL_LOCAL);
 		console.log("Connection established with the database!");
 	} catch (error) {
 		console.log("Error connecting to database", error);
