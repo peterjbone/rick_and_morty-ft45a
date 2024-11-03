@@ -24,6 +24,8 @@ async function postFav(req, res) {
 			const fav = await Favorite.findOne({ id: id, name: name });
 			const allFavs = await Favorite.find({});
 
+			console.log(fav);
+
 			if (!fav) {
 				const newFav = {
 					id,

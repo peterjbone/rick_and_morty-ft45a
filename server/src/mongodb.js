@@ -2,7 +2,7 @@
 require("dotenv").config();
 const { connect, Schema, model, models } = require("mongoose");
 
-if (!process.env.MONGODB_URL) {
+if (!process.env.MONGODB_URL_LOCAL) {
 	throw new Error("MONGODB_URL must be define.");
 }
 
@@ -16,14 +16,14 @@ async function connectDB() {
 }
 
 // importo modelos
-const userModel = require("./newModels/User.js");
-const favoriteModel = require("./newModels/Favorite.js");
+const userSchema = require("./newModels/User.js");
+const favoriteSchema = require("./newModels/Favorite.js");
 
 // creo las relaciones o referencias
-userModel.add({
+userSchema.add({
 	favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }]
 });
-favoriteModel.add({
+favoriteSchema.add({
 	users: [{ type: Schema.Types.ObjectId, ref: "User" }]
 });
 
