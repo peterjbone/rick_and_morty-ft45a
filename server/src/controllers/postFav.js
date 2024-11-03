@@ -1,4 +1,5 @@
-const { Favorite } = require("../DB_connection.js");
+//const { Favorite } = require("../DB_connection.js");
+const { Favorite } = require("../mongodb.js");
 
 async function postFav(req, res) {
 	//console.log(req.body)
@@ -6,11 +7,34 @@ async function postFav(req, res) {
 
 	if ((id, name && origin && status && image && species && gender)) {
 		try {
-			//* Agrega un nuevo registro a la tabla Favorites y devuelve todos los registros
-			const [newFav, created] = await Favorite.findOrCreate({ where: req.body });
-			const allFavs = await Favorite.findAll();
+			//* con sequelize
+			//const [newFav, created] = await Favorite.findOrCreate({ where: req.body });
+			//const allFavs = await Favorite.findAll();
 
-			if (created) {
+			/* 		if (created) {
+				console.log(`Se creo el registro de ${name.toUpperCase()} en la BD.`);
+				return res.status(200).json(allFavs);
+        } else {
+          console.log(`${name.toUpperCase()} ya estaba en BD.`);
+        return res.status(200).json(allFavs);
+        } */
+
+			//* con mongoose
+			/*********************************/
+			const fav = await Favorite.findOne({ id: id, name: name });
+			const allFavs = await Favorite.find({});
+
+			if (!fav) {
+				const newFav = {
+					id,
+					name,
+					origin,
+					status,
+					image,
+					species,
+					gender
+				};
+				await Favorite.create(newFav);
 				console.log(`Se creo el registro de ${name.toUpperCase()} en la BD.`);
 				return res.status(200).json(allFavs);
 			} else {
