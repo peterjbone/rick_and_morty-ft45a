@@ -1,3 +1,4 @@
+require("dotenv").config();
 //* NODE JS
 //* Using promises
 /* const axios = require("axios")
@@ -56,15 +57,16 @@ module.exports = getCharByid */
 //* NODE JS + EXPRESS JS
 //* Using async-await + try-catch
 
-const axios = require("axios")
-const URLApiCharacter = "https://rickandmortyapi.com/api/character/"
+const axios = require("axios");
+const { API_URL } = process.env;
+//const URLApiCharacter = "https://rickandmortyapi.com/api/character/";
 
 async function getCharByid(req, res) {
-	const { id } = req.params
+	const { id } = req.params;
 	try {
 		//? request to API rickandmorty
-		const { data } = await axios.get(`${URLApiCharacter}${id}`)
-		const { status, name, species, origin, image, gender } = data
+		const { data } = await axios.get(`${API_URL}/character/${id}`);
+		const { status, name, species, origin, image, gender } = data;
 		return res.status(200).json({
 			id: Number(id),
 			status,
@@ -73,11 +75,11 @@ async function getCharByid(req, res) {
 			origin: origin.name, //! ojo con esto
 			image,
 			gender
-		})
+		});
 	} catch (error) {
-		console.error(error.message)
-		res.status(404).send("Character Not founded.")
+		console.error(error.message);
+		res.status(404).send("Character Not founded.");
 	}
 }
 
-module.exports = getCharByid
+module.exports = getCharByid;
