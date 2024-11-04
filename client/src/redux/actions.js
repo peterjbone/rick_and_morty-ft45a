@@ -35,8 +35,8 @@ export const removeFav = (id) => {
 	};
 };
 
-export const getFav = () => {
-	const endpoint = `${apiBackUrl}/fav`;
+export const getFav = (userId) => {
+	const endpoint = `${apiBackUrl}/fav?id=${userId}`;
 	return async (dispatch) => {
 		const { data } = await axios.get(endpoint);
 		return dispatch({

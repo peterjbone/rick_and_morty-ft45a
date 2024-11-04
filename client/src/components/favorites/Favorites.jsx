@@ -18,10 +18,11 @@ export default function Favorites({ onClose }) {
 	//* global state "myFavorites"
 	const myFavorites = useSelector((state) => state.myFavorites);
 	const allCharacters = useSelector((state) => state.allCharacters);
+	const userId = useSelector((state) => state.userId);
 
 	//* upload all favs at the beginning
 	useEffect(() => {
-		dispatch(getFav());
+		dispatch(getFav(userId));
 	}, []);
 
 	//**************************************** FAVORITES COMPONENT
