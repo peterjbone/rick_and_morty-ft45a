@@ -1,14 +1,14 @@
-//* LAS ACTIONS SE ENCARGAN DE GUARDAR EN REDUX ESTADO GLOBAL Y POSTGRESQL BD
+//* LAS ACTIONS SE ENCARGAN DE GUARDAR EN REDUX ESTADO GLOBAL Y MONGODB
 
 import axios from "axios";
-import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types";
+import { FILTER, ORDER, ADD_FAV, REMOVE_FAV, GET_FAV } from "./action-types";
+const apiBackUrl = import.meta.env.VITE_BACK_URL;
 
 export const addFav = (character) => {
-	//console.log("character", character);
-	const endpoint = "http://localhost:3001/rickandmorty/fav";
+	const endpoint = `${apiBackUrl}/fav`;
 	return async (dispatch) => {
 		const { data } = await axios.post(endpoint, character);
-		//console.log("data", data);
+
 		return dispatch({
 			type: ADD_FAV,
 			payload: data.reverse()
@@ -17,13 +17,23 @@ export const addFav = (character) => {
 };
 
 export const removeFav = (id) => {
-	//console.log(id)
-	const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`;
+	const endpoint = `${apiBackUrl}/fav/${id}`;
 	return async (dispatch) => {
 		const { data } = await axios.delete(endpoint);
-		//console.log(data)
+
 		return dispatch({
 			type: REMOVE_FAV,
+			payload: data
+		});
+	};
+};
+
+export const getFav = () => {
+	const endpoint = `${apiBackUrl}/fav`;
+	return async (dispatch) => {
+		const { data } = await axios.get(endpoint);
+		return dispatch({
+			type: GET_FAV,
 			payload: data
 		});
 	};

@@ -39,6 +39,7 @@ async function postFav(req, res) {
 				return res.status(200).json(allFavs);
 			} else {
 				console.log(`${name.toUpperCase()} ya estaba en BD.`);
+				const allFavs = await Favorite.find({});
 				return res.status(200).json(allFavs);
 			}
 		} catch (error) {

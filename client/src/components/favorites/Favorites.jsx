@@ -17,8 +17,8 @@ export default function Favorites({ onClose }) {
 	let myFavorites = useSelector((state) => state.myFavorites);
 	console.log(myFavorites);
 
-	const { API_BACK_URL } = import.meta.env;
-	console.log(API_BACK_URL);
+	//const apiBackUrl = import.meta.env.VITE_BACK_URL;
+	useEffect(() => {}, []);
 
 	//**************************************** FAVORITES COMPONENT
 	return (
