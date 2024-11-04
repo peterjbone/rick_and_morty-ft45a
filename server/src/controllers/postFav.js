@@ -2,24 +2,11 @@ const { Favorite } = require("../mongodb.js");
 const { User } = require("../mongodb.js");
 
 async function postFav(req, res) {
-	//console.log(req.body)
-	const { id, name, origin, status, image, species, gender } = req.body;
+	const { userId, character } = req.body;
+	const { id, name, origin, status, image, species, gender } = character;
 
 	if ((id, name && origin && status && image && species && gender)) {
 		try {
-			//* con sequelize
-			//const [newFav, created] = await Favorite.findOrCreate({ where: req.body });
-			//const allFavs = await Favorite.findAll();
-
-			/* 		if (created) {
-				console.log(`Se creo el registro de ${name.toUpperCase()} en la BD.`);
-				return res.status(200).json(allFavs);
-        } else {
-          console.log(`${name.toUpperCase()} ya estaba en BD.`);
-        return res.status(200).json(allFavs);
-        } */
-
-			//* con mongoose
 			const fav = await Favorite.findOne({ id: id, name: name });
 
 			if (!fav) {
@@ -34,6 +21,12 @@ async function postFav(req, res) {
 				};
 				await Favorite.create(newFav);
 				console.log(`Se creo el registro de ${name.toUpperCase()} en la BD.`);
+
+				// guardando el id de favorito al usuario
+				const createdFav = await Favorite.findOne({ id: id, name: name });
+				await User.findByIdAndUpdate(userId, {
+					$push: { favorites: createdFav._id }
+				});
 
 				const allFavs = await Favorite.find({});
 				return res.status(200).json(allFavs.reverse());

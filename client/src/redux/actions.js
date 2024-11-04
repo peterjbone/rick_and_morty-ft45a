@@ -11,10 +11,10 @@ import {
 } from "./action-types";
 const apiBackUrl = import.meta.env.VITE_BACK_URL;
 
-export const addFav = (character) => {
+export const addFav = (info) => {
 	const endpoint = `${apiBackUrl}/fav`;
 	return async (dispatch) => {
-		const { data } = await axios.post(endpoint, character);
+		const { data } = await axios.post(endpoint, info);
 
 		return dispatch({
 			type: ADD_FAV,

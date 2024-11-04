@@ -5,6 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions.js";
 
 export default function Card({ character, id, name, image, onClose }) {
+	const userId = useSelector((state) => state.userId);
+	const info = {
+		userId,
+		character
+	};
+
 	//* add and remove favorites from redux
 	//prettier-ignore
 	const redHeart = "❤️", blackHeart = "🖤"
@@ -17,11 +23,11 @@ export default function Card({ character, id, name, image, onClose }) {
 			dispatch(removeFav(id));
 		} else {
 			setIsFav(true);
-			dispatch(addFav(character));
+			dispatch(addFav(info));
 		}
 	}
 
-	//* MANTENER FAVORITOS AL MONTAR COMPONENTE
+	//* keep the red heart in the card component
 	const myFavorites = useSelector((state) => state.myFavorites);
 	useEffect(() => {
 		myFavorites.forEach((fav) => {
