@@ -48,7 +48,7 @@ function App() {
 		dispacth(removeFav(id));
 	}
 
-	//*Login with animations
+	//* login function
 	//? Archivos involucrados en Frontend: App.jsx, Form.jsx, validation.js(utils)
 	//? Archivos involucrados en Backend: login.js(controller)
 
@@ -108,9 +108,7 @@ function App() {
 				.classList.add("invalid", "animate__animated", "animate__shakeX");
 
 			document.getElementById("password").addEventListener("input", (e) => {
-				if (
-					"block" === document.getElementById("notifyPassword").style.display
-				) {
+				if ("block" === document.getElementById("notifyPassword").style.display) {
 					document.getElementById("password").className = "";
 					messagePassword.style.display = "none";
 				}
@@ -123,13 +121,13 @@ function App() {
 		setAccess(false);
 	}
 
-	//* useEffect for AUTO REDIRECTION TO LOGIN OR HOME
+	//* Para redireccionar al login o al home
 	useEffect(() => {
-		//!access && navigate("/")
-		!access && navigate("/home");
+		access && navigate("/login");
+		//!access && navigate("/home");
 
 		if (
-			path !== "/" &&
+			path !== "/login" &&
 			path !== "/home" &&
 			path !== "/about" &&
 			!path.startsWith("detail") &&
@@ -139,6 +137,7 @@ function App() {
 		}
 	}, [access]);
 
+	//*********************************** APP COMPONENT
 	return (
 		<div className="App">
 			{path !== "/" &&
@@ -150,7 +149,7 @@ function App() {
 			) : null}
 			{/* prettier-ignore */}
 			<Routes>
-          <Route path="/" element={<Form login={ login } />} />
+          <Route path="/login" element={<Form login={ login } />} />
           <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
           <Route path="/about" element={<About onSearch={onSearch} />} />
           <Route path="/detail/:id" element={<Detail onSearch={onSearch}  logout={logout} />} />

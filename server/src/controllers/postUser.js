@@ -1,8 +1,7 @@
-//* Este controller no tiene UI en el frontend
-//* Ya que debería tener una página de registro (solo hay de login)
-//! Por el momento debes crear usuarios desde un API client (he removido register y login, ya no es util esta ruta)
+//? Esta ruta sirve para crear al usuario de prueba desde un API client
 
-const { User } = require("../DB_connection.js");
+//const { User } = require("../DB_connection.js");
+const { User } = require("../mongodb.js");
 
 async function postUser(req, res) {
 	try {

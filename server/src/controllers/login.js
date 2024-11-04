@@ -1,6 +1,7 @@
-//! Esta ruta ya esta obsoleta ya que elimine el login
+//? Esta ruta solo sirve para el login del Usuario de prueba
 
-const { User } = require("../DB_connection.js");
+//const { User } = require("../DB_connection.js");
+const { User } = require("../mongodb.js");
 
 async function login(req, res) {
 	try {
