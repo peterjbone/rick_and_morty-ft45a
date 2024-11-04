@@ -22,7 +22,6 @@ function App() {
 
 	//* searching and addings characters in local state
 	const [characters, setCharacters] = useState([]);
-
 	async function onSearch(id) {
 		//? Validación para no repetir personajes
 		const repeatedCharacter = characters.find((char) => char.id === Number(id));
@@ -51,7 +50,6 @@ function App() {
 	//* login function
 	//? Archivos involucrados en Frontend: App.jsx, Form.jsx, validation.js(utils)
 	//? Archivos involucrados en Backend: login.js(controller)
-
 	const [access, setAccess] = useState(false);
 
 	async function login(userData) {
@@ -64,6 +62,7 @@ function App() {
 
 		if (access) {
 			setAccess(access);
+			localStorage.setItem("savedAccess", JSON.stringify({ access: true }));
 			access && navigate("/home");
 		} else if (detail === "email") {
 			if (document.getElementById("notifyEmail") === null) {
@@ -116,17 +115,23 @@ function App() {
 		}
 	}
 
-	//* Logout
+	//* Logout function
 	function logout() {
 		setAccess(false);
+		localStorage.setItem("savedAccess", JSON.stringify({ access: false }));
+
+		window.location.reload();
 	}
 
-	//* Para redireccionar al login o al home
+	//* to redirect to login if access is false
 	useEffect(() => {
-		access && navigate("/login");
+		const savedAccess = JSON.parse(localStorage.getItem("savedAccess"));
+
+		!access && !savedAccess?.access && navigate("/login");
 		//!access && navigate("/home");
 
 		if (
+			path !== "/" &&
 			path !== "/login" &&
 			path !== "/home" &&
 			path !== "/about" &&
@@ -140,13 +145,16 @@ function App() {
 	//*********************************** APP COMPONENT
 	return (
 		<div className="App">
-			{path !== "/" &&
+			{/* Cuando no es /login y cuando sí es cualquiera de las otras páginas, se mostrara el nav*/}
+			{path !== "/login" &&
 			(path === "/home" ||
 				path === "/about" ||
 				path.startsWith("/detail") ||
 				path === "/favorites") ? (
 				<Nav onSearch={onSearch} characters={characters} logout={logout} />
 			) : null}
+
+			{/* LAS RUTAS */}
 			{/* prettier-ignore */}
 			<Routes>
           <Route path="/login" element={<Form login={ login } />} />
