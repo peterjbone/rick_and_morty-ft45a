@@ -8,7 +8,7 @@ async function deleteFav(req, res) {
 		// await Favorite.destroy({ where: { id } });
 		await Favorite.deleteOne({ id: id });
 		const allFavs = await Favorite.find({});
-		return res.status(200).json(allFavs);
+		return res.status(200).json(allFavs.reverse());
 	} catch (error) {
 		//* 1) Mongoose no encontro al personaje a eliminar
 		//* 2) error interno de mongoose

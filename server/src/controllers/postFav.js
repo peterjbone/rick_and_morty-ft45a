@@ -36,11 +36,11 @@ async function postFav(req, res) {
 				console.log(`Se creo el registro de ${name.toUpperCase()} en la BD.`);
 
 				const allFavs = await Favorite.find({});
-				return res.status(200).json(allFavs);
+				return res.status(200).json(allFavs.reverse());
 			} else {
 				console.log(`${name.toUpperCase()} ya estaba en BD.`);
 				const allFavs = await Favorite.find({});
-				return res.status(200).json(allFavs);
+				return res.status(200).json(allFavs.reverse());
 			}
 		} catch (error) {
 			//* ALgún error interno de sequelize o algún valor de un atributo/s es incorrecto

@@ -11,7 +11,7 @@ export const addFav = (character) => {
 
 		return dispatch({
 			type: ADD_FAV,
-			payload: data.reverse()
+			payload: data
 		});
 	};
 };

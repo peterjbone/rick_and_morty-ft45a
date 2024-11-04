@@ -22,6 +22,7 @@ function App() {
 
 	//* searching and addings characters in local state
 	const [characters, setCharacters] = useState([]);
+
 	async function onSearch(id) {
 		//? Validación para no repetir personajes
 		const repeatedCharacter = characters.find((char) => char.id === Number(id));
@@ -129,7 +130,6 @@ function App() {
 		//!access && navigate("/home");
 
 		if (
-			path !== "/" &&
 			path !== "/" &&
 			path !== "/home" &&
 			path !== "/about" &&

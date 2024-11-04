@@ -1,11 +1,13 @@
 import "./Favorites.css";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterCards, orderCards } from "../../redux/actions.js";
+import { filterCards, orderCards, getFav } from "../../redux/actions.js";
 import Card from "../card/Card.jsx";
 
 export default function Favorites({ onClose }) {
-	//* ORDENAR Y/O FILTRAR FAVORITOS
 	const dispatch = useDispatch();
+
+	//* sort and filter handlers
 	function handleOrder(e) {
 		dispatch(orderCards(e.target.value));
 	}
@@ -13,12 +15,13 @@ export default function Favorites({ onClose }) {
 		dispatch(filterCards(e.target.value));
 	}
 
-	//* ESTADO GLOBAL REDUX PARA MAPEAR COMPONENTE CARD
-	let myFavorites = useSelector((state) => state.myFavorites);
-	console.log(myFavorites);
+	//* global state "myFavorites"
+	const myFavorites = useSelector((state) => state.myFavorites);
 
-	//const apiBackUrl = import.meta.env.VITE_BACK_URL;
-	useEffect(() => {}, []);
+	//* upload all favs at the beginning
+	useEffect(() => {
+		dispatch(getFav());
+	}, []);
 
 	//**************************************** FAVORITES COMPONENT
 	return (
@@ -54,7 +57,7 @@ export default function Favorites({ onClose }) {
 				</div>
 			)}
 			{/* LOS FAVORITOS SIEMPRE SE MOSTRARAN, YA SEA Q NO HAYA O SI HAYA */}
-			<div className="Favorites">
+			<div className="favorites">
 				{!myFavorites.length ? (
 					<div className="no-favorites">
 						<h2>NO FAVORITES CHARACTERS TO SHOW</h2>
