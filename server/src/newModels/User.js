@@ -2,11 +2,11 @@ const { Schema } = require("mongoose");
 
 const userSchema = new Schema(
 	{
-		id: {
+		/* id: {
 			type: Number,
 			unique: true,
 			required: true
-		},
+		}, */
 		email: {
 			type: String,
 			required: true,
