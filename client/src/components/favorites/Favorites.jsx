@@ -1,22 +1,26 @@
-import "./Favorites.css"
-import { useDispatch, useSelector } from "react-redux"
-import { filterCards, orderCards } from "../../redux/actions.js"
-import Card from "../card/Card.jsx"
+import "./Favorites.css";
+import { useDispatch, useSelector } from "react-redux";
+import { filterCards, orderCards } from "../../redux/actions.js";
+import Card from "../card/Card.jsx";
 
 export default function Favorites({ onClose }) {
 	//* ORDENAR Y/O FILTRAR FAVORITOS
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	function handleOrder(e) {
-		dispatch(orderCards(e.target.value))
+		dispatch(orderCards(e.target.value));
 	}
 	function handleFilter(e) {
-		dispatch(filterCards(e.target.value))
+		dispatch(filterCards(e.target.value));
 	}
 
 	//* ESTADO GLOBAL REDUX PARA MAPEAR COMPONENTE CARD
-	const myFavorites = useSelector((state) => state.myFavorites)
+	let myFavorites = useSelector((state) => state.myFavorites);
+	console.log(myFavorites);
 
-	//* COMPONENTE FAVORITES
+	const { API_BACK_URL } = import.meta.env;
+	console.log(API_BACK_URL);
+
+	//**************************************** FAVORITES COMPONENT
 	return (
 		<>
 			{/* SOLO SE MUESTRA ESTOS FILTROS Y ORDENAMIENTOS SI HAY FAVORITOS */}
@@ -57,7 +61,8 @@ export default function Favorites({ onClose }) {
 						<span className="no-favorites__blackHeart">🖤</span>
 						<p>
 							You can add favorites <br /> by clicking on the{" "}
-							<span className="no-favorites__redHeart">❤️</span> of the character card
+							<span className="no-favorites__redHeart">❤️</span> of the character
+							card
 						</p>
 					</div>
 				) : (
@@ -75,10 +80,10 @@ export default function Favorites({ onClose }) {
 								onClose={onClose}
 								character={favCharacter}
 							/>
-						)
+						);
 					})
 				)}
 			</div>
 		</>
-	)
+	);
 }

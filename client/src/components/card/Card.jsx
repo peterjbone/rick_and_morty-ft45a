@@ -31,7 +31,7 @@ export default function Card({ character, id, name, image, onClose }) {
 		});
 	}, [myFavorites]);
 
-	//**********************************CARD COMPONENT
+	//********************************** CARD COMPONENT
 	return (
 		<div className="card">
 			{/* Boton de Cerrar */}

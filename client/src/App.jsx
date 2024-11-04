@@ -40,7 +40,7 @@ function App() {
 		}
 	}
 
-	//* close cards function
+	//* close cards handler function
 	const dispacth = useDispatch();
 	function onClose(id) {
 		setCharacters(characters.filter((char) => char.id !== Number(id)));
@@ -119,20 +119,18 @@ function App() {
 	function logout() {
 		setAccess(false);
 		localStorage.setItem("savedAccess", JSON.stringify({ access: false }));
-
 		window.location.reload();
 	}
 
-	//* to redirect to login if access is false
+	//* to redirect to login if "access" and "savedAccess" are false
 	useEffect(() => {
 		const savedAccess = JSON.parse(localStorage.getItem("savedAccess"));
-
-		!access && !savedAccess?.access && navigate("/login");
+		!access && !savedAccess?.access && navigate("/");
 		//!access && navigate("/home");
 
 		if (
 			path !== "/" &&
-			path !== "/login" &&
+			path !== "/" &&
 			path !== "/home" &&
 			path !== "/about" &&
 			!path.startsWith("detail") &&
@@ -145,8 +143,8 @@ function App() {
 	//*********************************** APP COMPONENT
 	return (
 		<div className="App">
-			{/* Cuando no es /login y cuando sí es cualquiera de las otras páginas, se mostrara el nav*/}
-			{path !== "/login" &&
+			{/* Cuando no es / y cuando sí es cualquiera de las otras páginas, se mostrara el nav*/}
+			{path !== "/" &&
 			(path === "/home" ||
 				path === "/about" ||
 				path.startsWith("/detail") ||
@@ -157,7 +155,7 @@ function App() {
 			{/* LAS RUTAS */}
 			{/* prettier-ignore */}
 			<Routes>
-          <Route path="/login" element={<Form login={ login } />} />
+          <Route path="/" element={<Form login={ login } />} />
           <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
           <Route path="/about" element={<About onSearch={onSearch} />} />
           <Route path="/detail/:id" element={<Detail onSearch={onSearch}  logout={logout} />} />
