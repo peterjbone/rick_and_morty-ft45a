@@ -1,8 +1,16 @@
-import { ADD_FAV, FILTER, ORDER, REMOVE_FAV, GET_FAV } from "./action-types.js";
+import {
+	FILTER,
+	ORDER,
+	ADD_FAV,
+	REMOVE_FAV,
+	GET_FAV,
+	SAVE_USER
+} from "./action-types.js";
 
 const initialState = {
 	myFavorites: [], //? los favoritos filtrados
-	allCharacters: [] //? todos los favoritos
+	allCharacters: [], //? todos los favoritos
+	userId: ""
 };
 
 function reducer(state = initialState, { type, payload }) {
@@ -26,6 +34,12 @@ function reducer(state = initialState, { type, payload }) {
 				...state,
 				myFavorites: payload,
 				allCharacters: payload
+			};
+
+		case SAVE_USER:
+			return {
+				...state,
+				userId: payload
 			};
 
 		case FILTER: {

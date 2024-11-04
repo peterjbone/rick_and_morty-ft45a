@@ -1,10 +1,10 @@
 import "./App.css";
 import "animate.css";
 import axios from "axios";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { removeFav } from "./redux/actions.js";
-import { useDispatch } from "react-redux";
+import { removeFav, saveUser } from "./redux/actions.js";
+import { useDispatch, useSelector } from "react-redux";
 import About from "./components/about/About.jsx";
 import Cards from "./components/cards/Cards.jsx";
 import Detail from "./components/detail/Detail.jsx";
@@ -12,9 +12,7 @@ import Favorites from "./components/favorites/Favorites.jsx";
 import Form from "./components/form/Form.jsx";
 import NotFound from "./components/notfound/NotFound.jsx";
 import Nav from "./components/nav/Nav.jsx";
-
-//? Local link - Character request
-const URLGetCharactersById = "http://localhost:3001/rickandmorty/character/";
+const apiBackUrl = import.meta.env.VITE_BACK_URL;
 
 function App() {
 	const path = useLocation().pathname;
@@ -32,7 +30,7 @@ function App() {
 
 		//? Axios GET request using try-catch / async await
 		try {
-			const { data } = await axios.get(`${URLGetCharactersById}${id}`);
+			const { data } = await axios.get(`${apiBackUrl}/character/${id}`);
 			setCharacters([data, ...characters]);
 		} catch (error) {
 			window.alert(
@@ -55,15 +53,18 @@ function App() {
 
 	async function login(userData) {
 		const { email, password } = userData;
-		const URLLogin = "http://localhost:3001/rickandmorty/login";
 		const { data } = await axios.get(
-			`${URLLogin}?email=${email}&password=${password}`
+			`${apiBackUrl}/login?email=${email}&password=${password}`
 		);
-		const { access, detail } = data;
+		const { access, detail, userId } = data;
 
 		if (access) {
 			setAccess(access);
 			localStorage.setItem("savedAccess", JSON.stringify({ access: true }));
+
+			dispacth(saveUser(userId));
+			localStorage.setItem("savedUserId", JSON.stringify({ userId }));
+
 			access && navigate("/home");
 		} else if (detail === "email") {
 			if (document.getElementById("notifyEmail") === null) {
@@ -120,6 +121,7 @@ function App() {
 	function logout() {
 		setAccess(false);
 		localStorage.setItem("savedAccess", JSON.stringify({ access: false }));
+		localStorage.removeItem("savedUserId");
 		window.location.reload();
 	}
 
@@ -140,10 +142,18 @@ function App() {
 		}
 	}, [access]);
 
+	//* bring the userId saved in localstorage
+	useEffect(() => {
+		const state = JSON.parse(localStorage.getItem("savedUserId"));
+		if (state?.userId) {
+			dispacth(saveUser(state?.userId));
+		}
+	}, []);
+
 	//*********************************** APP COMPONENT
 	return (
 		<div className="App">
-			{/* Cuando no es / y cuando sí es cualquiera de las otras páginas, se mostrara el nav*/}
+			{/* Cuando no es / y cuando sí es cualquiera de las otras páginas, SE MOSTRARA LA NAV*/}
 			{path !== "/" &&
 			(path === "/home" ||
 				path === "/about" ||

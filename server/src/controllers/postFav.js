@@ -1,4 +1,5 @@
 const { Favorite } = require("../mongodb.js");
+const { User } = require("../mongodb.js");
 
 async function postFav(req, res) {
 	//console.log(req.body)
@@ -19,7 +20,6 @@ async function postFav(req, res) {
         } */
 
 			//* con mongoose
-			/*********************************/
 			const fav = await Favorite.findOne({ id: id, name: name });
 
 			if (!fav) {

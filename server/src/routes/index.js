@@ -15,6 +15,6 @@ router.get("/login", login); // FINALIZADO
 router.get("/character/:id", getCharById); // FINALIZADO
 router.post("/fav", postFav); // FINALIZADO
 router.delete("/fav/:id", deleteFav); // FINALIZADO
-router.get("/fav", getAllFavs);
+router.get("/fav", getAllFavs); // FINALIZADO
 
 module.exports = router;
