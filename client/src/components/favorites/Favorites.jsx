@@ -17,6 +17,7 @@ export default function Favorites({ onClose }) {
 
 	//* global state "myFavorites"
 	const myFavorites = useSelector((state) => state.myFavorites);
+	const allCharacters = useSelector((state) => state.allCharacters);
 
 	//* upload all favs at the beginning
 	useEffect(() => {
@@ -27,7 +28,7 @@ export default function Favorites({ onClose }) {
 	return (
 		<>
 			{/* SOLO SE MUESTRA ESTOS FILTROS Y ORDENAMIENTOS SI HAY FAVORITOS */}
-			{!myFavorites.length ? null : (
+			{!allCharacters.length ? null : (
 				<div className="fav-selects">
 					{/* ORDER */}
 					<div className="order-container">
