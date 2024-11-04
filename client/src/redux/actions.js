@@ -4,11 +4,11 @@ import axios from "axios";
 import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types";
 
 export const addFav = (character) => {
-	console.log(character);
+	//console.log("character", character);
 	const endpoint = "http://localhost:3001/rickandmorty/fav";
 	return async (dispatch) => {
 		const { data } = await axios.post(endpoint, character);
-		console.log(data);
+		console.log("data", data);
 		return dispatch({
 			type: ADD_FAV,
 			payload: data

@@ -1,4 +1,3 @@
-//const { Favorite } = require("../DB_connection.js");
 const { Favorite } = require("../mongodb.js");
 
 async function postFav(req, res) {
@@ -22,9 +21,6 @@ async function postFav(req, res) {
 			//* con mongoose
 			/*********************************/
 			const fav = await Favorite.findOne({ id: id, name: name });
-			const allFavs = await Favorite.find({});
-
-			console.log(fav);
 
 			if (!fav) {
 				const newFav = {
@@ -38,6 +34,8 @@ async function postFav(req, res) {
 				};
 				await Favorite.create(newFav);
 				console.log(`Se creo el registro de ${name.toUpperCase()} en la BD.`);
+
+				const allFavs = await Favorite.find({});
 				return res.status(200).json(allFavs);
 			} else {
 				console.log(`${name.toUpperCase()} ya estaba en BD.`);

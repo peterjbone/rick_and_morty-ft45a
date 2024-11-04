@@ -1,36 +1,37 @@
-import "./Card.css"
-import { Link } from "react-router-dom"
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { addFav, removeFav } from "../../redux/actions.js"
+import "./Card.css";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addFav, removeFav } from "../../redux/actions.js";
 
 export default function Card({ character, id, name, image, onClose }) {
-	//* AÑADIR Y QUITAR FAVORITOS EN REDUX
+	//* add and remove favorites from redux
 	//prettier-ignore
 	const redHeart = "❤️", blackHeart = "🖤"
-	const [isFav, setIsFav] = useState(false)
-	const dispatch = useDispatch()
+	const [isFav, setIsFav] = useState(false);
+	const dispatch = useDispatch();
+
 	function handleFavorite() {
 		if (isFav) {
-			setIsFav(false)
-			dispatch(removeFav(id))
+			setIsFav(false);
+			dispatch(removeFav(id));
 		} else {
-			setIsFav(true)
-			dispatch(addFav(character))
+			setIsFav(true);
+			dispatch(addFav(character));
 		}
 	}
 
 	//* MANTENER FAVORITOS AL MONTAR COMPONENTE
-	const myFavorites = useSelector((state) => state.myFavorites)
+	const myFavorites = useSelector((state) => state.myFavorites);
 	useEffect(() => {
 		myFavorites.forEach((fav) => {
 			if (fav.id === id) {
-				setIsFav(true)
+				setIsFav(true);
 			}
-		})
-	}, [myFavorites])
+		});
+	}, [myFavorites]);
 
-	//* COMPONENTE CARD
+	//**********************************CARD COMPONENT
 	return (
 		<div className="card">
 			{/* Boton de Cerrar */}
@@ -40,11 +41,17 @@ export default function Card({ character, id, name, image, onClose }) {
 
 			{/* Boton de Favorito */}
 			{isFav ? (
-				<button onClick={handleFavorite} id="favBtn" style={{ backgroundColor: "#000" }}>
+				<button
+					onClick={handleFavorite}
+					id="favBtn"
+					style={{ backgroundColor: "#000" }}>
 					{redHeart}
 				</button>
 			) : (
-				<button onClick={handleFavorite} id="favBtn" style={{ backgroundColor: "crimson" }}>
+				<button
+					onClick={handleFavorite}
+					id="favBtn"
+					style={{ backgroundColor: "crimson" }}>
 					{blackHeart}
 				</button>
 			)}
@@ -59,5 +66,5 @@ export default function Card({ character, id, name, image, onClose }) {
 				</div>
 			</Link>
 		</div>
-	)
+	);
 }
