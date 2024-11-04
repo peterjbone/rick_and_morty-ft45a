@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { removeFav, saveUser } from "./redux/actions.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import About from "./components/about/About.jsx";
 import Cards from "./components/cards/Cards.jsx";
 import Detail from "./components/detail/Detail.jsx";
@@ -15,10 +15,12 @@ import Nav from "./components/nav/Nav.jsx";
 const apiBackUrl = import.meta.env.VITE_BACK_URL;
 
 function App() {
+	const dispacth = useDispatch();
 	const path = useLocation().pathname;
 	const navigate = useNavigate();
+	const [access, setAccess] = useState(false);
 
-	//* searching and addings characters in local state
+	//* onSearch function (for nav)
 	const [characters, setCharacters] = useState([]);
 
 	async function onSearch(id) {
@@ -39,8 +41,7 @@ function App() {
 		}
 	}
 
-	//* close cards handler function
-	const dispacth = useDispatch();
+	//* onClose function (for cards)
 	function onClose(id) {
 		setCharacters(characters.filter((char) => char.id !== Number(id)));
 		dispacth(removeFav(id));
@@ -49,8 +50,6 @@ function App() {
 	//* login function
 	//? Archivos involucrados en Frontend: App.jsx, Form.jsx, validation.js(utils)
 	//? Archivos involucrados en Backend: login.js(controller)
-	const [access, setAccess] = useState(false);
-
 	async function login(userData) {
 		const { email, password } = userData;
 		const { data } = await axios.get(
@@ -63,7 +62,7 @@ function App() {
 			localStorage.setItem("savedAccess", JSON.stringify({ access: true }));
 
 			dispacth(saveUser(userId));
-			localStorage.setItem("savedUserId", JSON.stringify({ userId }));
+			localStorage.setItem("savedUserId", JSON.stringify({ id: userId }));
 
 			access && navigate("/home");
 		} else if (detail === "email") {
@@ -121,7 +120,10 @@ function App() {
 	function logout() {
 		setAccess(false);
 		localStorage.setItem("savedAccess", JSON.stringify({ access: false }));
+
+		dispacth(saveUser(""));
 		localStorage.removeItem("savedUserId");
+
 		window.location.reload();
 	}
 
@@ -145,8 +147,8 @@ function App() {
 	//* bring the userId saved in localstorage
 	useEffect(() => {
 		const state = JSON.parse(localStorage.getItem("savedUserId"));
-		if (state?.userId) {
-			dispacth(saveUser(state?.userId));
+		if (state?.id) {
+			dispacth(saveUser(state?.id));
 		}
 	}, []);
 
