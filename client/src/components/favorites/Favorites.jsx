@@ -18,9 +18,10 @@ export default function Favorites({ onClose }) {
 	//* global state "myFavorites"
 	const myFavorites = useSelector((state) => state.myFavorites);
 	const allCharacters = useSelector((state) => state.allCharacters);
+	console.log(allCharacters);
 	const userId = useSelector((state) => state.userId);
 
-	//* upload all favs at the beginning
+	//* filling "allCharacters" and "myFavorites" with the favorites using the "userId"
 	useEffect(() => {
 		const value = userId || JSON.parse(localStorage.getItem("savedUserId")).id;
 		dispatch(getFav(value));
@@ -29,7 +30,7 @@ export default function Favorites({ onClose }) {
 	//**************************************** FAVORITES COMPONENT
 	return (
 		<>
-			{/* Siempre se muestra los filtros mientras haya favoritos en el estado global */}
+			{/* filtros y ordenamientos, siempre se muestran mientras haya favoritos en 'allCharacters' */}
 			{!allCharacters.length ? null : (
 				<div className="fav-selects">
 					{/* ORDER */}

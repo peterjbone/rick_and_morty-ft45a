@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions.js";
 
-export default function Card({ character, id, name, image, onClose, mongoId }) {
-	console.log(mongoId);
+export default function Card({ character, id, name, image, onClose, favId }) {
+	console.log(favId);
 
+	//* setting the info to save or remove the favorite
 	const userId = useSelector((state) => state.userId);
 	const info = {
 		userId,

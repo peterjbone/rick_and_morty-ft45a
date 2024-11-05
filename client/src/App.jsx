@@ -51,11 +51,11 @@ function App() {
 	//? Archivos involucrados en Frontend: App.jsx, Form.jsx, validation.js(utils)
 	//? Archivos involucrados en Backend: login.js(controller)
 	async function login(userData) {
-		const { email, password } = userData;
+		const { email, password } = userData; // from the login form
 		const { data } = await axios.get(
 			`${apiBackUrl}/login?email=${email}&password=${password}`
 		);
-		const { access, detail, userId } = data;
+		const { access, detail, userId } = data; // from the response of the backend
 
 		if (access) {
 			setAccess(access);
@@ -127,24 +127,13 @@ function App() {
 		window.location.reload();
 	}
 
-	//* to redirect to login if "access" and "savedAccess" are false
+	//* to redirect to login form if "access" and "savedAccess" are false
 	useEffect(() => {
 		const savedAccess = JSON.parse(localStorage.getItem("savedAccess"));
 		!access && !savedAccess?.access && navigate("/");
-		//!access && navigate("/home");
-
-		if (
-			path !== "/" &&
-			path !== "/home" &&
-			path !== "/about" &&
-			!path.startsWith("detail") &&
-			path !== "/favorites"
-		) {
-			navigate("/notFound");
-		}
 	}, [access]);
 
-	//* bring the userId saved in localstorage and save it again in redux
+	//* setting the "userId" global state every time there is a reload
 	useEffect(() => {
 		const user = JSON.parse(localStorage.getItem("savedUserId"));
 		if (user?.id) {
