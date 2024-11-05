@@ -144,11 +144,11 @@ function App() {
 		}
 	}, [access]);
 
-	//* bring the userId saved in localstorage
+	//* bring the userId saved in localstorage and save it again in redux
 	useEffect(() => {
-		const state = JSON.parse(localStorage.getItem("savedUserId"));
-		if (state?.id) {
-			dispacth(saveUser(state?.id));
+		const user = JSON.parse(localStorage.getItem("savedUserId"));
+		if (user?.id) {
+			dispacth(saveUser(user?.id));
 		}
 	}, []);
 

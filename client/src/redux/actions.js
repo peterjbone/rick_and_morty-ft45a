@@ -23,8 +23,8 @@ export const addFav = (info) => {
 	};
 };
 
-export const removeFav = (id) => {
-	const endpoint = `${apiBackUrl}/fav/${id}`;
+export const removeFav = (favId, userId) => {
+	const endpoint = `${apiBackUrl}/fav?favid=${favId}&userid=${userId}`;
 	return async (dispatch) => {
 		const { data } = await axios.delete(endpoint);
 

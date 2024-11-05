@@ -22,13 +22,14 @@ export default function Favorites({ onClose }) {
 
 	//* upload all favs at the beginning
 	useEffect(() => {
-		dispatch(getFav(userId));
+		const value = userId || JSON.parse(localStorage.getItem("savedUserId")).id;
+		dispatch(getFav(value));
 	}, []);
 
 	//**************************************** FAVORITES COMPONENT
 	return (
 		<>
-			{/* SOLO SE MUESTRA ESTOS FILTROS Y ORDENAMIENTOS SI HAY FAVORITOS */}
+			{/* Siempre se muestra los filtros mientras haya favoritos en el estado global */}
 			{!allCharacters.length ? null : (
 				<div className="fav-selects">
 					{/* ORDER */}
@@ -58,7 +59,7 @@ export default function Favorites({ onClose }) {
 					</div>
 				</div>
 			)}
-			{/* LOS FAVORITOS SIEMPRE SE MOSTRARAN, YA SEA Q NO HAYA O SI HAYA */}
+			{/* Grid de favoritos, ya sean todos o filtrados*/}
 			<div className="favorites">
 				{!myFavorites.length ? (
 					<div className="no-favorites">

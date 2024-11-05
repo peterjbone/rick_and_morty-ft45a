@@ -1,12 +1,12 @@
-//const { Favorite } = require("../DB_connection.js");
 const { Favorite } = require("../mongodb.js");
+const { User } = require("../mongodb.js");
 
 async function deleteFav(req, res) {
 	const { id } = req.params;
 
 	try {
-		// await Favorite.destroy({ where: { id } });
 		await Favorite.deleteOne({ id: id });
+		//User.findByIdAndUpdate();
 		const allFavs = await Favorite.find({});
 		return res.status(200).json(allFavs.reverse());
 	} catch (error) {
