@@ -44,7 +44,7 @@ function App() {
 	//* onClose function (for cards)
 	function onClose(id) {
 		setCharacters(characters.filter((char) => char.id !== Number(id)));
-		dispacth(removeFav(id));
+		//dispacth(removeFav(id));
 	}
 
 	//* login function

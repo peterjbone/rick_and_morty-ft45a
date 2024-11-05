@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterCards, orderCards, getFav } from "../../redux/actions.js";
 import Card from "../card/Card.jsx";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Favorites({ onClose }) {
 	const dispatch = useDispatch();
@@ -18,7 +19,6 @@ export default function Favorites({ onClose }) {
 	//* global state "myFavorites"
 	const myFavorites = useSelector((state) => state.myFavorites);
 	const allCharacters = useSelector((state) => state.allCharacters);
-	console.log(allCharacters);
 	const userId = useSelector((state) => state.userId);
 
 	//* filling "allCharacters" and "myFavorites" with the favorites using the "userId"
@@ -73,19 +73,15 @@ export default function Favorites({ onClose }) {
 						</p>
 					</div>
 				) : (
-					myFavorites.map((favCharacter) => {
+					myFavorites.map((item) => {
 						return (
 							<Card
-								key={favCharacter.id}
-								name={favCharacter.name}
-								id={favCharacter.id}
-								status={favCharacter.status}
-								species={favCharacter.species}
-								gender={favCharacter.gender}
-								origin={favCharacter.origin.name}
-								image={favCharacter.image}
+								key={uuidv4()}
+								id={item.id}
+								name={item.name}
+								image={item.image}
 								onClose={onClose}
-								character={favCharacter}
+								character={item}
 							/>
 						);
 					})

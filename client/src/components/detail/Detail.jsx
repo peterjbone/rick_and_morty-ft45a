@@ -1,16 +1,16 @@
-import "./Detail.css"
-import React, { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
-import axios from "axios"
+import "./Detail.css";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-export default function Detail(props) {
-	const URL = "http://localhost:3001/rickandmorty/character"
-	const { id } = useParams()
-	const [character, setCharacter] = useState({})
+export default function Detail() {
+	const apiBackUrl = import.meta.env.VITE_BACK_URL;
+	const { id } = useParams();
+	const [character, setCharacter] = useState({});
 
 	useEffect(() => {
 		//prettier-ignore
-		axios(`${URL}/${id}`)
+		axios(`${apiBackUrl}/character/${id}`)
         .then(({ data }) => {
 					setCharacter(data)
         })
@@ -19,8 +19,8 @@ export default function Detail(props) {
           alert("There are no characters with that ID")
         })
 
-		return setCharacter({})
-	}, [id])
+		return setCharacter({});
+	}, [id]);
 
 	return (
 		<div className="Detail">
@@ -37,5 +37,5 @@ export default function Detail(props) {
 				</div>
 			</div>
 		</div>
-	)
+	);
 }

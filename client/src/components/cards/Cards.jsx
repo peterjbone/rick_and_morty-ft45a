@@ -1,6 +1,7 @@
-import "./Cards.css"
-import React from "react"
-import Card from "../card/Card.jsx"
+import "./Cards.css";
+import React from "react";
+import Card from "../card/Card.jsx";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Cards({ characters, onClose }) {
 	return (
@@ -20,20 +21,16 @@ export default function Cards({ characters, onClose }) {
 				characters.map((character) => {
 					return (
 						<Card
-							key={character.id}
-							character={character}
-							name={character.name}
+							key={uuidv4()}
 							id={character.id}
-							status={character.status}
-							species={character.species}
-							gender={character.gender}
-							origin={character.origin.name}
+							name={character.name}
 							image={character.image}
 							onClose={onClose}
+							character={character}
 						/>
-					)
+					);
 				})
 			)}
 		</div>
-	)
+	);
 }

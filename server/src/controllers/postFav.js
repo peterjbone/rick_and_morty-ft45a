@@ -8,6 +8,7 @@ async function postFav(req, res) {
 	if ((id, name && origin && status && image && species && gender)) {
 		try {
 			const fav = await Favorite.findOne({ id: id, name: name });
+			//console.log(fav);
 
 			if (!fav) {
 				const newFav = {
@@ -28,8 +29,12 @@ async function postFav(req, res) {
 					$push: { favorites: createdFav._id }
 				});
 
-				const allFavs = await Favorite.find({});
-				return res.status(200).json(allFavs.reverse());
+				//! CORREGIR
+				//const allFavs = await Favorite.find({});
+				//return res.status(200).json(allFavs.reverse());
+
+				const { favorites } = await User.findById(userId).populate("favorites");
+				return res.status(200).json(favorites.reverse());
 			} else {
 				console.log(`${name.toUpperCase()} ya estaba en BD.`);
 				const allFavs = await Favorite.find({});

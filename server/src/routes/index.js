@@ -14,7 +14,7 @@ router.post("/register", postUser); // FINALIZADO
 router.get("/login", login); // FINALIZADO
 router.get("/character/:id", getCharById); // FINALIZADO
 router.post("/fav", postFav); // FINALIZADO
-router.delete("/fav/:id", deleteFav); // FINALIZADO
+router.delete("/fav", deleteFav); // FINALIZADO
 router.get("/fav", getAllFavs); // FINALIZADO
 
 module.exports = router;

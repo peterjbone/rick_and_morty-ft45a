@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions.js";
+import { v4 as uuidv4 } from "uuid";
+import { useLocation } from "react-router-dom";
 
-export default function Card({ character, id, name, image, onClose, favId }) {
-	console.log(favId);
+export default function Card({ character, id, name, image, onClose }) {
+	const { pathname } = useLocation();
+	//console.log(pathname);
 
-	//* setting the info to save or remove the favorite
+	//* setting the info to add a new favorite
 	const userId = useSelector((state) => state.userId);
 	const info = {
 		userId,
@@ -23,7 +26,7 @@ export default function Card({ character, id, name, image, onClose, favId }) {
 	function handleFavorite() {
 		if (isFav) {
 			setIsFav(false);
-			dispatch(removeFav(id, userId));
+			dispatch(removeFav(character._id, userId));
 		} else {
 			setIsFav(true);
 			dispatch(addFav(info));
@@ -44,9 +47,11 @@ export default function Card({ character, id, name, image, onClose, favId }) {
 	return (
 		<div className="card">
 			{/* Boton de Cerrar */}
-			<button onClick={() => onClose(id)} id="closeBtn">
-				X
-			</button>
+			{pathname === "/favorites" ? null : (
+				<button onClick={() => onClose(id)} id="closeBtn">
+					X
+				</button>
+			)}
 
 			{/* Boton de Favorito */}
 			{isFav ? (
@@ -66,7 +71,7 @@ export default function Card({ character, id, name, image, onClose, favId }) {
 			)}
 
 			{/* Resto de la card */}
-			<Link key={id} to={`/detail/${id}`}>
+			<Link key={uuidv4()} to={`/detail/${id}`}>
 				<img src={image} alt={name} />
 				<span className="card-id">ID: {id}</span>
 				<div className="card-name-container">

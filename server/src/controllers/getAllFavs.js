@@ -1,10 +1,7 @@
 require("dotenv").config();
-//const { Favorite } = require("../mongodb.js");
 const { User } = require("../mongodb.js");
 
 const getAllFavs = async (req, res) => {
-	//console.log(req.query);
-
 	const { id } = req.query;
 
 	try {
