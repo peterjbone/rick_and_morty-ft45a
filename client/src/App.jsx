@@ -157,7 +157,7 @@ function App() {
 			{/* prettier-ignore */}
 			<Routes>
           <Route path="/" element={<Form login={ login } />} />
-          <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
+          <Route path="/home" element={<Cards characters={characters} onSearch={onSearch} onClose={onClose} />} />
           <Route path="/about" element={<About onSearch={onSearch} />} />
           <Route path="/detail/:id" element={<Detail onSearch={onSearch}  logout={logout} />} />
           <Route path="/favorites" element={<Favorites onClose={onClose} />}></Route>

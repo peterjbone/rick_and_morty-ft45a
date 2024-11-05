@@ -59,6 +59,10 @@
 	background-color: var(--green);
 }
 
+.navbar button.logout {
+	padding: 0.4rem;
+}
+
 .navbar__favorites-btn:hover {
 	cursor: pointer;
 	color: #000;

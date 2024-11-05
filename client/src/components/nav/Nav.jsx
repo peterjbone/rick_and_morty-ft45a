@@ -1,31 +1,20 @@
-import "./Nav.css"
-import React, { useRef } from "react"
-import { Link } from "react-router-dom"
-import { FaBars, FaTimes } from "react-icons/fa"
-import SearchBar from "../searchBar/SearchBar.jsx"
+import "./Nav.css";
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-export default function Nav(props) {
-	//* Add random character function
-	const randomCharacter = () => {
-		let randomNum = Math.floor(Math.random() * 826) + 1
-		const charactersId = props.characters.map((char) => {
-			return char.id
-		})
-		if (charactersId.includes(randomNum)) return
-		props.onSearch(randomNum)
-	}
-
+export default function Nav({ logout }) {
 	//* Responsive navbar function
-	const navRef = useRef()
+	const navRef = useRef();
 	const showNavbar = () => {
-		navRef.current.classList.toggle("responsive-nav")
-	}
+		navRef.current.classList.toggle("responsive-nav");
+	};
 
+	//*********************************** NAVBAR COMPONENT
 	return (
 		<nav className="navbar">
 			<Link to="/home">
 				<img
-					/* src="../../../public/logo_proto.webp" */
 					src="https://i.postimg.cc/cHH4JcWv/logo-proto.webp"
 					alt="Logo"
 					className="logo"
@@ -44,13 +33,14 @@ export default function Nav(props) {
 					</Link>
 				</li>
 
+				{/* 
 				<li>
-					<button onClick={randomCharacter}>Add ramdonly</button>
+					<button onClick={randomCharacter}>Add randomly</button>
 				</li>
 
 				<li>
 					<SearchBar onSearch={props.onSearch} />
-				</li>
+				</li> */}
 
 				<li>
 					<Link to="/about">
@@ -59,7 +49,9 @@ export default function Nav(props) {
 				</li>
 
 				<li>
-					<button onClick={props.logout}>Log out 🔙</button>
+					<button className="logout" onClick={logout}>
+						Log out 🔙
+					</button>
 				</li>
 
 				<li>
@@ -72,5 +64,5 @@ export default function Nav(props) {
 				<FaBars />
 			</button>
 		</nav>
-	)
+	);
 }
