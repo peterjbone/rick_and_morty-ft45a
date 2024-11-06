@@ -27,7 +27,7 @@ export default function Favorites({ onClose }) {
 		dispatch(getFav(value));
 	}, []);
 
-	//**************************************** FAVORITES COMPONENT
+	//**************************************** FAVORITES COMPONENT (VIEW)
 	return (
 		<>
 			{/* filtros y ordenamientos, siempre se muestran mientras haya favoritos en 'allCharacters' */}

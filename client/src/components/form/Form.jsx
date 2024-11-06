@@ -3,6 +3,7 @@
 import "./Form.css";
 import React, { useState } from "react";
 import validation from "../../utils/validation.js"; //? Validaciones para formularios controlados
+import { Link } from "react-router-dom";
 
 export default function Form({ login }) {
 	//* Creando estados locales de datos de usuario y errores de validación
@@ -39,6 +40,7 @@ export default function Form({ login }) {
 		login(userData);
 	}
 
+	//***************************** FORM LOGIN COMPONENT (VIEW)
 	return (
 		<div className="loginForm-container">
 			<h2>Login</h2>
@@ -73,6 +75,9 @@ export default function Form({ login }) {
 						Submit
 					</button>
 				</div>
+				<span className="linkRegister">
+					You don’t have an account? <Link to="/register">Go to register</Link>
+				</span>
 			</form>
 		</div>
 	);

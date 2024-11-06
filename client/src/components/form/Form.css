@@ -9,8 +9,7 @@
 }
 
 .loginForm-container > h2 {
-	/* 	position: absolute;
-	top: 15px; */
+	margin: 0 0 1rem 0;
 	font-size: 2rem;
 	color: var(--grey);
 }
@@ -109,4 +108,15 @@
 #notifyEmail.error,
 #notifyPassword.error {
 	background-color: #dd2c00;
+}
+
+/********************************/
+.linkRegister {
+	margin: 1rem 0 0 0;
+	font-weight: 600;
+	color: white;
+}
+
+.linkRegister a {
+	color: #fff;
 }
