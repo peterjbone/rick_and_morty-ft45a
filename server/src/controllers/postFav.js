@@ -7,8 +7,8 @@ async function postFav(req, res) {
 
 	if ((id, name && origin && status && image && species && gender)) {
 		try {
+			//? Creando favorito, agg el id del favorito al usuario y devolviendo todos los favoritos del usuario
 			const fav = await Favorite.findOne({ id: id, name: name });
-			//console.log(fav);
 
 			if (!fav) {
 				const newFav = {
@@ -23,25 +23,22 @@ async function postFav(req, res) {
 				await Favorite.create(newFav);
 				console.log(`Se creo el registro de ${name.toUpperCase()} en la BD.`);
 
-				// guardando el id de favorito al usuario
 				const createdFav = await Favorite.findOne({ id: id, name: name });
 				await User.findByIdAndUpdate(userId, {
 					$push: { favorites: createdFav._id }
 				});
 
-				//! CORREGIR
-				//const allFavs = await Favorite.find({});
-				//return res.status(200).json(allFavs.reverse());
-
 				const { favorites } = await User.findById(userId).populate("favorites");
 				return res.status(200).json(favorites.reverse());
 			} else {
+				//? Avisando al usuario que el personaje ya estaba en favoritos y devolviendo todos los favoritos del usuario
 				console.log(`${name.toUpperCase()} ya estaba en BD.`);
-				const allFavs = await Favorite.find({});
-				return res.status(200).json(allFavs.reverse());
+
+				const { favorites } = await User.findById(userId).populate("favorites");
+				return res.status(200).json(favorites.reverse());
 			}
 		} catch (error) {
-			//* ALgún error interno de sequelize o algún valor de un atributo/s es incorrecto
+			//* ALgún error interno de mongoose o algún valor de un atributo/s es incorrecto
 			return res.status(500).send(error.message);
 		}
 	}

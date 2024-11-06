@@ -1,44 +1,20 @@
 .cards {
-	width: fit-content;
-	min-width: 400px;
-	max-width: 85%;
+	width: 100%;
+	min-height: 90vh;
+	padding: 2rem 0 0 0;
+	/* border: 3px solid orange; */
 
-	padding: 1rem;
-	margin: 2rem auto;
-
-	display: grid;
-	grid-template-columns: repeat(2, minmax(150px, 200px));
-	grid-auto-rows: 300px;
-	align-items: stretch;
-	gap: 25px 10px;
-}
-
-/* sm screens*/
-@media (min-width: 640px) {
-	.cards {
-		grid-template-columns: repeat(3, minmax(150px, 200px));
-	}
-}
-
-/* md screens*/
-@media (min-width: 768px) {
-	.cards {
-		grid-template-columns: repeat(4, minmax(150px, 200px));
-	}
-}
-
-/* lg screens*/
-@media (min-width: 1024px) {
-	.cards {
-		grid-template-columns: repeat(5, minmax(150px, 200px));
-	}
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 2rem;
 }
 
 .noCards {
 	width: 100%;
 	min-height: 90vh;
-	padding: 1rem 0 0 0;
-	border: 3px solid red;
+	padding: 2rem 0 0 0;
+	/* 	border: 3px solid red; */
+
 	display: flex;
 	flex-flow: column nowrap;
 	gap: 4rem;
@@ -48,7 +24,6 @@
 
 .searchBtns {
 	width: 100%;
-	/* 	border: 3px solid orange; */
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: center;
@@ -57,6 +32,7 @@
 
 .searchBtns > div > input {
 	min-width: 100px;
+	max-width: 150px;
 	height: 2rem;
 	border: none;
 	padding: 0.5rem;
@@ -108,4 +84,37 @@
 }
 
 .cardsGrid {
+	width: fit-content;
+	min-width: 400px;
+	max-width: 85%;
+
+	padding: 0;
+	margin: 2rem auto;
+
+	display: grid;
+	grid-template-columns: repeat(2, minmax(150px, 200px));
+	grid-auto-rows: 300px;
+	align-items: stretch;
+	gap: 25px 10px;
+}
+
+/* sm screens*/
+@media (min-width: 640px) {
+	.cardsGrid {
+		grid-template-columns: repeat(3, minmax(150px, 200px));
+	}
+}
+
+/* md screens*/
+@media (min-width: 768px) {
+	.cardsGrid {
+		grid-template-columns: repeat(4, minmax(150px, 200px));
+	}
+}
+
+/* lg screens*/
+@media (min-width: 1024px) {
+	.cardsGrid {
+		grid-template-columns: repeat(5, minmax(150px, 200px));
+	}
 }
