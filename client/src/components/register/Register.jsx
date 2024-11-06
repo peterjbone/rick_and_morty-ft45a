@@ -1,8 +1,20 @@
-import React from "react";
 import styles from "./Register.module.css";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import validation from "../../utils/validation.js";
 
 const Register = () => {
+	//? info del usuario y errores
+	const [userData, setUserData] = useState({
+		email: "",
+		password: ""
+	});
+
+	const [errors, setErrors] = useState({
+		email: "Enter your email",
+		password: "Enter your password"
+	});
+
 	//*************************************** REGISTER COMPONENT (VIEW)
 	return (
 		<div className={styles.register}>
