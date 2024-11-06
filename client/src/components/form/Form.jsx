@@ -42,7 +42,7 @@ export default function Form({ login }) {
 
 	//***************************** FORM LOGIN COMPONENT (VIEW)
 	return (
-		<div className="loginFormContainer">
+		<div className="login">
 			<h2>Login</h2>
 			<form className="loginForm" onSubmit={handleSubmit}>
 				<div>

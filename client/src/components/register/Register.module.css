@@ -1,4 +1,4 @@
-.loginFormContainer {
+.register {
 	width: 100%;
 	height: 100vh;
 	background-color: #000;
@@ -8,13 +8,13 @@
 	align-items: center;
 }
 
-.loginFormContainer > h2 {
+.register > h2 {
 	margin: 0 0 1rem 0;
 	font-size: 2rem;
 	color: var(--grey);
 }
 
-.loginForm {
+.registerForm {
 	position: relative;
 	width: 400px;
 	height: 400px;
@@ -34,18 +34,18 @@
 	align-items: center;
 }
 
-.loginForm div {
+.registerForm div {
 	width: 300px;
 	color: var(--grey);
 }
 
-.loginForm div label {
+.registerForm div label {
 	font-size: 1.3rem;
 	font-weight: 700;
 	color: #fff;
 }
 
-.loginForm div input {
+.registerForm div input {
 	width: 100%;
 	height: 2rem;
 	padding: 1rem;
@@ -57,7 +57,7 @@
 	display: block;
 }
 
-.loginForm div button {
+.registerForm div button {
 	width: 50%;
 	height: 40px;
 	border: medium solid #fff;
@@ -67,16 +67,16 @@
 	background-color: var(--blue);
 }
 
-.loginForm div button:hover {
+.registerForm div button:hover {
 	cursor: pointer;
 }
 
-.loginForm div button.disabled {
+.registerForm div button.disabled {
 	transition: 0.5s;
 	filter: grayscale(100%);
 }
 
-.loginForm p {
+.registerForm p {
 	color: red;
 	font-weight: 900;
 	font-size: 1.3rem;
@@ -86,11 +86,11 @@
 
 /********************************/
 
-#email.invalid {
+.emailInput.invalid {
 	border: medium solid red;
 }
 
-#password.invalid {
+.passwordInput.invalid {
 	border: medium solid red;
 }
 
@@ -112,12 +112,12 @@
 
 /********************************/
 
-.linkRegister {
+.linkLogin {
 	margin: 1rem 0 0 0;
 	font-weight: 600;
 	color: white;
 }
 
-.linkRegister a {
+.linkLogin a {
 	color: #fff;
 }
