@@ -15,7 +15,7 @@
 	border: none;
 	font-size: 1rem;
 	font-weight: 600;
-	font-family: system-ui;
+	/* 	font-family: system-ui; */
 	color: var(--blue);
 	background-color: var(--green);
 }

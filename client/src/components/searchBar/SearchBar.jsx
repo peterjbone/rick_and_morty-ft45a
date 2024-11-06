@@ -24,10 +24,11 @@ export default function SearchBar({ onSearch }) {
 				id="search"
 				name="search"
 				placeholder="Enter an ID"
+				title="Add any character by their id number"
 				onChange={handleChange}
 				value={id}
 			/>
-			<button onClick={handleClick}>Add by ID</button>
+			<button onClick={handleClick}>Add</button>
 		</div>
 	);
 }
