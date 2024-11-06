@@ -150,7 +150,7 @@ function App() {
 				path === "/about" ||
 				path.startsWith("/detail") ||
 				path === "/favorites") ? (
-				<Nav onSearch={onSearch} characters={characters} logout={logout} />
+				<Nav logout={logout} />
 			) : null}
 
 			{/* LAS RUTAS */}

@@ -18,17 +18,18 @@ export default function Cards({ characters, onSearch, onClose }) {
 
 	//********************************* CARDS COMPONENT
 	return (
-		<div className="cards">
-			{!characters.length ? null : (
-				<div className="addBtns">
-					<button onClick={randomCharacter}>Add randomly</button>
-					<SearchBar onSearch={onSearch} />
-				</div>
-			)}
+		<div className={!characters.length ? "noCards" : "Cards"}>
+			{/* Buttons to search characters */}
+			<div className="addBtns">
+				<button onClick={randomCharacter}>Add randomly</button>
+				<SearchBar onSearch={onSearch} />
+			</div>
+
+			{/* Message or Grid  */}
 			{!characters.length ? (
-				<div className="no-cards-message">
+				<div className="noCardsMessage">
 					<h2>NO CHARACTERS ADDED TO SHOW</h2>
-					<img src="https://www.icegif.com/wp-content/uploads/2023/04/icegif-1320.gif"></img>
+					<img src="https://www.icegif.com/wp-content/uploads/2023/04/icegif-1320.gif" />
 					<p>
 						You can add characters randomly or by their {""}
 						<a href="https://rickandmortyapi.com/api/character" target="_blank">
@@ -37,18 +38,20 @@ export default function Cards({ characters, onSearch, onClose }) {
 					</p>
 				</div>
 			) : (
-				characters.map((character) => {
-					return (
-						<Card
-							key={uuidv4()}
-							id={character.id}
-							name={character.name}
-							image={character.image}
-							onClose={onClose}
-							character={character}
-						/>
-					);
-				})
+				<div className="cardsGrid">
+					{characters.map((character) => {
+						return (
+							<Card
+								key={uuidv4()}
+								id={character.id}
+								name={character.name}
+								image={character.image}
+								onClose={onClose}
+								character={character}
+							/>
+						);
+					})}
+				</div>
 			)}
 		</div>
 	);
