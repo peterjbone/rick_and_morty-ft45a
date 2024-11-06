@@ -3,7 +3,7 @@ import "animate.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { removeFav, saveUser } from "./redux/actions.js";
+import { saveUser } from "./redux/actions.js";
 import { useDispatch } from "react-redux";
 import About from "./components/about/About.jsx";
 import Cards from "./components/cards/Cards.jsx";

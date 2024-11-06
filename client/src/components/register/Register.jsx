@@ -7,7 +7,7 @@ const Register = () => {
 	return (
 		<div className={styles.register}>
 			<h2>Register</h2>
-			<form className="loginForm" onSubmit={handleSubmit}>
+			<form className={styles.registerFormContainer} onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor="email">Email:</label>
 					<input
