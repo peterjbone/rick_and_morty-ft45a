@@ -30,10 +30,10 @@ export default function Detail() {
 			<div className="info-container">
 				<div>
 					<p className="character-name">{character.name}</p>
-					<p> 🔎 Status | {character.status}</p>
-					<p> ❓ Species | {character.species}</p>
-					<p> 👫 Gender | {character.gender}</p>
-					{<p> 👀 Origin | {character.origin}</p>}
+					<p> 🔎 Status: {character.status}</p>
+					<p> ❓ Species: {character.species}</p>
+					<p> 👫 Gender: {character.gender}</p>
+					{<p> 👀 Origin: {character.origin}</p>}
 				</div>
 			</div>
 		</div>

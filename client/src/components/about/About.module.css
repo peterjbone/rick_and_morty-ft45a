@@ -1,4 +1,4 @@
-.About {
+.about {
 	width: 100%;
 	height: calc(100vh - 90px);
 	color: #000;
@@ -7,4 +7,22 @@
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+}
+
+.about ul {
+	padding: 0;
+	margin: 1rem 0 0 0;
+}
+
+.about ul > li {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 1rem;
+	align-items: center;
+}
+
+.icon {
+	width: 30px;
+	height: 30px;
+	/* font-size: 2rem; */
 }
