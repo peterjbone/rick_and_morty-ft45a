@@ -18,10 +18,12 @@ export default function Cards({ characters, onSearch, onClose }) {
 
 	//********************************* CARDS COMPONENT
 	return (
-		<div className={!characters.length ? "noCards" : "Cards"}>
+		<div className={!characters.length ? "noCards" : "cards"}>
 			{/* Buttons to search characters */}
-			<div className="addBtns">
-				<button onClick={randomCharacter}>Add randomly</button>
+			<div className="searchBtns">
+				<div>
+					<button onClick={randomCharacter}>Add randomly</button>
+				</div>
 				<SearchBar onSearch={onSearch} />
 			</div>
 
