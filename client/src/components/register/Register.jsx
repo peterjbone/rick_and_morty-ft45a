@@ -46,10 +46,31 @@ const Register = () => {
 
 		if (message.includes("creado")) {
 			navigate("/");
-			toast("The user was created!");
-			toast("Now log in.");
+			toast.success("The user was created!");
+			toast.info("Now log in.");
 		} else if (message.includes("existe")) {
-			toast("The user already exist!");
+			toast.error("Ups, the user already exist!", {
+				position: "top-center",
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "dark",
+				transition: "bounce"
+			});
+			toast.info("Please, try again or go back to login page", {
+				position: "top-center",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "dark",
+				transition: "bounce"
+			});
 		}
 
 		//todo: hacer 2 notificaciones, por si el correo ya existe o por si se creo con exito (necesita logearse)
