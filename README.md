@@ -18,7 +18,7 @@
 
 ![Home](./client/public/home.gif)
 
-### Responsive Navigation Bar
+### Responsive design
 
 ![Responsive navbar](./client/public/responsive_navbar.gif)
 

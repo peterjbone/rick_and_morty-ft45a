@@ -30,7 +30,7 @@ function App() {
 		//? Validación para no repetir personajes
 		const repeatedCharacter = characters.find((char) => char.id === Number(id));
 		if (repeatedCharacter) {
-			return alert(`${repeatedCharacter.name} ya esta agregado/a!`);
+			return toast.warn(`${repeatedCharacter.name} is already added!`);
 		}
 
 		//? Axios GET request using try-catch / async await
@@ -38,8 +38,8 @@ function App() {
 			const { data } = await axios.get(`${apiBackUrl}/character/${id}`);
 			setCharacters([data, ...characters]);
 		} catch (error) {
-			window.alert(
-				"¡No hay personajes con este ID!, el mínimo es de 1 y el máximo es el 826 :)"
+			toast.warn(
+				"There are no characters with this ID!, the minimum is 1 and the maximum is 826 :)"
 			);
 		}
 	}
