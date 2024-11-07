@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import validation from "../../utils/validation.js";
 const apiBackUrl = import.meta.env.VITE_BACK_URL;
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast, Bounce } from "react-toastify";
 
 const Register = () => {
 	const navigate = useNavigate();
@@ -42,12 +42,11 @@ const Register = () => {
 		const { email, password } = userData;
 		const { data } = await axios.post(`${apiBackUrl}/register`, { email, password });
 		const { message } = data;
-		//console.log(message);
 
 		if (message.includes("creado")) {
 			navigate("/");
 			toast.success("The user was created!");
-			toast.info("Now log in.");
+			toast.info("Now please log in.");
 		} else if (message.includes("existe")) {
 			toast.error("Ups, the user already exist!", {
 				position: "top-center",
@@ -58,9 +57,9 @@ const Register = () => {
 				draggable: true,
 				progress: undefined,
 				theme: "dark",
-				transition: "bounce"
+				transition: Bounce
 			});
-			toast.info("Please, try again or go back to login page", {
+			toast.info("Please, use other email or go back to login page", {
 				position: "top-center",
 				autoClose: 5000,
 				hideProgressBar: false,
@@ -69,12 +68,9 @@ const Register = () => {
 				draggable: true,
 				progress: undefined,
 				theme: "dark",
-				transition: "bounce"
+				transition: Bounce
 			});
 		}
-
-		//todo: hacer 2 notificaciones, por si el correo ya existe o por si se creo con exito (necesita logearse)
-		//todo: agg una notificación
 	};
 
 	//? submit function

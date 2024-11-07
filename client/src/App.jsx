@@ -14,7 +14,7 @@ import Register from "./components/register/Register.jsx";
 import NotFound from "./components/notfound/NotFound.jsx";
 import Nav from "./components/nav/Nav.jsx";
 const apiBackUrl = import.meta.env.VITE_BACK_URL;
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -68,6 +68,9 @@ function App() {
 			localStorage.setItem("savedUserId", JSON.stringify({ id: userId }));
 
 			access && navigate("/home");
+			toast.success("Login successfully!", {
+				autoClose: "2000"
+			});
 		} else if (detail === "email") {
 			if (document.getElementById("notifyEmail") === null) {
 				const messageEmail = document.createElement("div");
@@ -168,7 +171,13 @@ function App() {
           <Route path="/favorites" element={<Favorites onClose={onClose} />}></Route>
           <Route path="*" element={<NotFound />} />
       </Routes>
-			<ToastContainer />
+			<ToastContainer
+				closeOnClick
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="dark"
+			/>
 		</div>
 	);
 }
