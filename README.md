@@ -8,7 +8,7 @@
 
 ![New login](./client/public/new_login.gif)
 
-### Home
+### Exploring Home section
 
 ![Home](./client/public/home.gif)
 
@@ -16,7 +16,7 @@
 
 ![Responsive navbar](./client/public/responsive_navbar.gif)
 
-### Favorites: Filter and Sort
+### Filters and Sorts of Favorite section
 
 ![Favorites](./client/public/favorites.gif)
 
