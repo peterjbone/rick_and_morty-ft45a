@@ -58,11 +58,20 @@
 	align-items: center;
 }
 
+/* extra sm screens*/
+@media (max-width: 480px) {
+	.no-favorites {
+		padding: 1rem;
+		font-weight: 500;
+		font-size: 1rem;
+	}
+}
+
 .no-favorites__blackHeart {
 	font-size: 5rem;
 }
 
-/***** ORT AND FILTER ***/
+/***** SORT AND FILTER ***/
 
 .fav-selects {
 	position: relative;
