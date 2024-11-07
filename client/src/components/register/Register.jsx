@@ -1,12 +1,16 @@
 import "animate.css";
 import styles from "./Register.module.css";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import validation from "../../utils/validation.js";
 const apiBackUrl = import.meta.env.VITE_BACK_URL;
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Register = () => {
+	const navigate = useNavigate();
+
 	//? info del usuario y errores
 	const [userData, setUserData] = useState({
 		email: "",
@@ -38,7 +42,15 @@ const Register = () => {
 		const { email, password } = userData;
 		const { data } = await axios.post(`${apiBackUrl}/register`, { email, password });
 		const { message } = data;
-		console.log(message);
+		//console.log(message);
+
+		if (message.includes("creado")) {
+			navigate("/");
+			toast("The user was created!");
+			toast("Now log in.");
+		} else if (message.includes("existe")) {
+			toast("The user already exist!");
+		}
 
 		//todo: hacer 2 notificaciones, por si el correo ya existe o por si se creo con exito (necesita logearse)
 		//todo: agg una notificación

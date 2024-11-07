@@ -14,6 +14,8 @@ import Register from "./components/register/Register.jsx";
 import NotFound from "./components/notfound/NotFound.jsx";
 import Nav from "./components/nav/Nav.jsx";
 const apiBackUrl = import.meta.env.VITE_BACK_URL;
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 	const dispacth = useDispatch();
@@ -165,7 +167,8 @@ function App() {
           <Route path="/detail/:id" element={<Detail onSearch={onSearch}  logout={logout} />} />
           <Route path="/favorites" element={<Favorites onClose={onClose} />}></Route>
           <Route path="*" element={<NotFound />} />
-        </Routes>
+      </Routes>
+			<ToastContainer />
 		</div>
 	);
 }
