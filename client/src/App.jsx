@@ -10,6 +10,7 @@ import Cards from "./components/cards/Cards.jsx";
 import Detail from "./components/detail/Detail.jsx";
 import Favorites from "./components/favorites/Favorites.jsx";
 import Form from "./components/form/Form.jsx";
+import Register from "./components/register/Register.jsx";
 import NotFound from "./components/notfound/NotFound.jsx";
 import Nav from "./components/nav/Nav.jsx";
 const apiBackUrl = import.meta.env.VITE_BACK_URL;
@@ -84,7 +85,7 @@ function App() {
 				.classList.add("invalid", "animate__animated", "animate__shakeX");
 
 			document.getElementById("email").addEventListener("input", (e) => {
-				if ("block" === document.getElementById("notifyEmail").style.display) {
+				if ("block" === messageEmail.style.display) {
 					document.getElementById("email").className = "";
 					messageEmail.style.display = "none";
 				}
@@ -108,7 +109,7 @@ function App() {
 				.classList.add("invalid", "animate__animated", "animate__shakeX");
 
 			document.getElementById("password").addEventListener("input", (e) => {
-				if ("block" === document.getElementById("notifyPassword").style.display) {
+				if ("block" === messagePassword.style.display) {
 					document.getElementById("password").className = "";
 					messagePassword.style.display = "none";
 				}
@@ -146,6 +147,7 @@ function App() {
 		<div className="App">
 			{/* Cuando no es / y cuando sí es cualquiera de las otras páginas, SE MOSTRARA LA NAV*/}
 			{path !== "/" &&
+			path !== "/register" &&
 			(path === "/home" ||
 				path === "/about" ||
 				path.startsWith("/detail") ||
@@ -157,6 +159,7 @@ function App() {
 			{/* prettier-ignore */}
 			<Routes>
           <Route path="/" element={<Form login={ login } />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Cards characters={characters} onSearch={onSearch} onClose={onClose} />} />
           <Route path="/about" element={<About onSearch={onSearch} />} />
           <Route path="/detail/:id" element={<Detail onSearch={onSearch}  logout={logout} />} />

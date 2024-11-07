@@ -94,8 +94,8 @@
 	border: medium solid red;
 }
 
-#notifyEmail,
-#notifyPassword {
+.notifyEmail,
+.notifyPassword {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 10px;
@@ -105,8 +105,8 @@
 	display: block;
 	width: 100%;
 }
-#notifyEmail.error,
-#notifyPassword.error {
+.notifyEmail.error,
+.notifyPassword.error {
 	background-color: #dd2c00;
 }
 

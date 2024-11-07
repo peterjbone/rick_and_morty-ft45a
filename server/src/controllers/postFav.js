@@ -3,6 +3,8 @@ const { User } = require("../mongodb.js");
 
 async function postFav(req, res) {
 	const { userId, character } = req.body;
+	console.log(req.body);
+
 	const { id, name, origin, status, image, species, gender } = character;
 
 	if ((id, name && origin && status && image && species && gender)) {

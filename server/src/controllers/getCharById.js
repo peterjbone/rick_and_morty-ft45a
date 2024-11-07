@@ -59,7 +59,6 @@ module.exports = getCharByid */
 
 const axios = require("axios");
 const { API_URL } = process.env;
-//const URLApiCharacter = "https://rickandmortyapi.com/api/character/";
 
 async function getCharByid(req, res) {
 	const { id } = req.params;
