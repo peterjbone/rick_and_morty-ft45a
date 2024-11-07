@@ -3,7 +3,7 @@ const { User } = require("../mongodb.js");
 
 async function postFav(req, res) {
 	const { userId, character } = req.body;
-	console.log(req.body);
+	//console.log(req.body);
 
 	const { id, name, origin, status, image, species, gender } = character;
 
@@ -35,6 +35,11 @@ async function postFav(req, res) {
 			} else {
 				//? Avisando al usuario que el personaje ya estaba en favoritos y devolviendo todos los favoritos del usuario
 				console.log(`${name.toUpperCase()} ya estaba en BD.`);
+
+				const foundFav = await Favorite.findOne({ id: id, name: name });
+				await User.findByIdAndUpdate(userId, {
+					$push: { favorites: foundFav._id }
+				});
 
 				const { favorites } = await User.findById(userId).populate("favorites");
 				return res.status(200).json(favorites.reverse());
