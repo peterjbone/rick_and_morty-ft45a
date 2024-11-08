@@ -10,6 +10,9 @@ const deleteFav = require("../controllers/deleteFav.js");
 const getAllFavs = require("../controllers/getAllFavs.js");
 
 //* USING CONTROLLERS
+router.get("/", (req, res) => {
+	return res.status(200).send("Hello there!");
+}); // FINALIZADO
 router.post("/register", postUser); // FINALIZADO
 router.get("/login", login); // FINALIZADO
 router.get("/character/:id", getCharById); // FINALIZADO
