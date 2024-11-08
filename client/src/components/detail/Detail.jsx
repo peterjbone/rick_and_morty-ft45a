@@ -2,10 +2,11 @@ import "./Detail.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+//const apiBackUrl = import.meta.env.VITE_BACK_URL;
+//const apiBackUrl = process.env.VITE_BACK_URL;
+const apiBackUrl = "https://rickandmorty-6ii0.onrender.com/rickandmorty";
 
 export default function Detail() {
-	//const apiBackUrl = import.meta.env.VITE_BACK_URL;
-	const apiBackUrl = process.env.VITE_BACK_URL;
 	const { id } = useParams();
 	const [character, setCharacter] = useState({});
 

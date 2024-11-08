@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import validation from "../../utils/validation.js";
 //const apiBackUrl = import.meta.env.VITE_BACK_URL;
-const apiBackUrl = process.env.VITE_BACK_URL;
+//const apiBackUrl = process.env.VITE_BACK_URL;
+const apiBackUrl = "https://rickandmorty-6ii0.onrender.com/rickandmorty";
 import axios from "axios";
 import { toast, Bounce } from "react-toastify";
 

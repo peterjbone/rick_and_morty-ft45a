@@ -14,7 +14,8 @@ import Register from "./components/register/Register.jsx";
 import NotFound from "./components/notfound/NotFound.jsx";
 import Nav from "./components/nav/Nav.jsx";
 //const apiBackUrl = import.meta.env.VITE_BACK_URL;
-const apiBackUrl = process.env.VITE_BACK_URL;
+//const apiBackUrl = process.env.VITE_BACK_URL;
+const apiBackUrl = "https://rickandmorty-6ii0.onrender.com/rickandmorty";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
