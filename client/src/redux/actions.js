@@ -9,7 +9,8 @@ import {
 	GET_FAV,
 	SAVE_USER
 } from "./action-types";
-const apiBackUrl = import.meta.env.VITE_BACK_URL;
+//const apiBackUrl = import.meta.env.VITE_BACK_URL;
+const apiBackUrl = process.env.VITE_BACK_URL;
 
 export const addFav = (info) => {
 	const endpoint = `${apiBackUrl}/fav`;

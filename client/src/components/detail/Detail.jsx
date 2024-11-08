@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export default function Detail() {
-	const apiBackUrl = import.meta.env.VITE_BACK_URL;
+	//const apiBackUrl = import.meta.env.VITE_BACK_URL;
+	const apiBackUrl = process.env.VITE_BACK_URL;
 	const { id } = useParams();
 	const [character, setCharacter] = useState({});
 
