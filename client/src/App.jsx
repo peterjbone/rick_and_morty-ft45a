@@ -125,14 +125,17 @@ function App() {
 	}
 
 	//* Logout function
+	//! CORREGIR: en lugar de recargar la pagina, directamente envialo a login "/"
 	function logout() {
+		navigate("/");
+
 		setAccess(false);
 		localStorage.setItem("savedAccess", JSON.stringify({ access: false }));
 
 		dispacth(saveUser(""));
 		localStorage.removeItem("savedUserId");
 
-		window.location.reload();
+		//window.location.reload();
 	}
 
 	//* to redirect to login form if "access" and "savedAccess" are false
